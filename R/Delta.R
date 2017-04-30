@@ -45,7 +45,7 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
     M5  = Mxs$M5
 	#NO asintotics calculation 
 	#Calculations: Part 2, derivate Kappa and SE
-	kappa.res = Cohen_Kappa(M4)
+	kappa.res = GetKappa(M4)
 	if (tp == "2.1" | tp == "3.1"){
 		kappa.res$kappa = 1
 	}
