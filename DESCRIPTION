@@ -7,7 +7,7 @@ Description: Measure of agreement Delta was originally by Martín & Femia on
 	fields, since their behavior is usually better than the usual Kappa index
 	(Cohen, 1960). The main issue with Delta is that can not be computed by 
 	hand contrary to Kappa.
-Depends: R (>= 3.4.0)
+Depends: R (>= 3.2.0)
 Imports: stats
 License: GPL-3
 Encoding: UTF-8
