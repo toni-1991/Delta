@@ -10,7 +10,7 @@ GetM1(datatable)
 \item{datatable}{Matrix. Expected to be square matrix with at least 2 rows (columns), non negative values and at least an element different of zero.}
 }
 \description{
-This function reduce matrix provided by the user deleting missing categories, those j where \sum_{i=1}^n a_{ji} = \sum_{i=1}^n a_ij = 0.
+This function reduce matrix provided by the user deleting missing categories, those j where sum(datatable[j,]) = sum(datatable[,j]) = 0.
 Also provide a list of the categories deleted and provides the new size of the problem
 }
 \examples{
