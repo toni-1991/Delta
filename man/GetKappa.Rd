@@ -10,7 +10,7 @@ GetKappa(mx)
 \item{mx}{Matrix. Agreement contingency table to perform calculations}
 }
 \description{
-This function perform Cohen's Kappa coefficient calculations. The function provide the Kappa coefficient and SE with the provided.
+This function perform Cohen's Kappa coefficient calculations. The function provide the Kappa coefficient and SE.
 }
 \examples{
 GetKappa(matrix(c(50,10,10,20),2,2))

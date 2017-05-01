@@ -1,6 +1,6 @@
 #' Calculate Cohen's Kappa coefficient function
 #'
-#' This function perform Cohen's Kappa coefficient calculations. The function provide the Kappa coefficient and SE with the provided.
+#' This function perform Cohen's Kappa coefficient calculations. The function provide the Kappa coefficient and SE.
 #' 
 #' @param mx Matrix. Agreement contingency table to perform calculations
 #' @keywords Kappa Cohen mx

@@ -58,7 +58,6 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	Pi 		= res.Pi$Pi
 	Delta 	= res.Pi$Delta
 	B 		= res.Pi$B
-	term 		= res.Pi$term
     #mat will be the matrix to be used for calcs
 	mat = M2
   
@@ -76,7 +75,6 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  Pi 		= res.Pi$Pi
 	  Delta 	= res.Pi$Delta
 	  B 		= res.Pi$B
-	  term 		= res.Pi$term
 	  mat 		= M3
 	}
 	

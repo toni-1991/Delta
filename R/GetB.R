@@ -1,5 +1,17 @@
-#B parameter calculation
-GetB <-function(mx, tol, maxits){
+#' Calculate B function
+#'
+#' This function solve numericaly the non lineal inequation of the Delta system. Also return the s(i) values of the equation.
+#' 
+#' @param mx Matrix. Modified matrix to have a solution Usually GetMx$M2.
+#' @param maxits Whole number. Indicate the maximum number of iterations of the numeric method to calculate B. Expected to be 100 <= maxits <= 5000. Default is 1000.
+#' @param tol Double number. Indicate the precision of the numeric method to calculate B. Expected to be 1e-6 <= tol <= 1e-15.Default is 1e-12.
+#' @keywords Delta B mx tol maxits
+#' @export
+#' @examples
+#' GetB(mx = matrix(c(1,0,0,0,2,0,0,0,3),3,3),tol = 1e-12, maxits = 1000)
+#' GetB(mx = matrix(c(1,2,0,3,4,0,0,0,1),3,3),tol = 1e-12, maxits = 1000)
+
+GetB <-function(mx, tol = 1e-12, maxits = 1000){
   
   #Calculate needed parameters
   dim.matrix = dim(mx)
