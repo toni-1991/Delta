@@ -32,10 +32,11 @@ GetGoodness <- function(mx,Pi,Delta){
   diag(chi.matrix)= 0
 
   #To avoid undefinition in case of divide by 0, we will set E_{ij} = 0 to 1
-  E.matrix[(E.matrix == 0)] = 1
+  E.matrix_aux = E.matrix
+  E.matrix_aux[(E.matrix == 0)] = 1
 
   # Calculate chi-squared
-  chi.squared = sum(chi.matrix/E.matrix)
+  chi.squared = sum(chi.matrix/E.matrix_aux)
 
   #Degree of freedoms
   df = (dim.matrix-1) * (dim.matrix - 2) - 1
