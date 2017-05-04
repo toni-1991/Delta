@@ -78,7 +78,7 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  mat 		= M3
 	}
 	
-	Covar = GetCovarianze(mat,Delta,Pi,B,k)
+	Covar = GetCovariance(mat,Delta,Pi,B,k)
 	Cov_Delta 	= Covar$Cov_Delta
 	Cov_mix 	= Covar$Cov_mix
 	Cov_Pi 		= Covar$Cov_Pi
