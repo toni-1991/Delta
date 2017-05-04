@@ -19,7 +19,7 @@ GetDeltaParams(mx, fixedrows, Delta, Pi, B, k, Cov)
 
 \item{k}{Integer. Dimension of the problem.}
 
-\item{Cov}{Matrix. Covarianze matrix of Delta.}
+\item{Cov}{Matrix. Covariance matrix of Delta.}
 }
 \description{
 This function perform all needed calculations to get all Delta related parameters. For do the exact calculations some variables previously calculated are needed.
