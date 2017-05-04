@@ -8,7 +8,7 @@
 #' @param Pi Vector. Each element indicate the probability of classify at random an element in category i.
 #' @param B Double. Numerical solution to the equation given by the model.
 #' @param k Integer. Dimension of the problem.
-#' @param Cov Matrix. Covarianze matrix of Delta. 
+#' @param Cov Matrix. Covariance matrix of Delta. 
 #' @keywords Delta  mx fixedrows Pi B k Cov
 #' @export
 #' @examples
