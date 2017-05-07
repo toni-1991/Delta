@@ -34,7 +34,7 @@ GetB <-function(mx, tol = 1e-12, maxits = 1000){
   term = rep(-1, dim.matrix[1])
 
   radical = function(B){
-    radicals = Re(sqrt((B + (C.marg - R.marg))^2 - 4 * B * (C.marg - diag.matrix)))
+    radicals = sqrt(pmax((B + (C.marg - R.marg))^2 - 4 * B * (C.marg - diag.matrix),0))
     return(radicals)
   }
   y = function(B){

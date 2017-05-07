@@ -55,7 +55,7 @@ GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
 	  Delta.total.cov = 1/n^2 * (n - 1/Sum.E - n * Delta^2)
 	}
 	else if (k == 2){
-	  Delta.total.cov = 1/n^2 * (sum((R.marg %*%t(R.marg)) * Cov) + sum(R.marg * Delta^2) - n * Delta^2)
+	  Delta.total.cov = 1/n^2 * (sum((R.marg %*%t(R.marg)) * Cov) + sum(R.marg * Delta^2) - n * Delta.total^2)
 	}
   }#Sampling type 2
   else if (fixedrows == TRUE){
@@ -71,6 +71,45 @@ GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
   }
   res = list("Delta.total" = Delta.total, "F" = F, "P" = P, "A" = A, "S" = S,
 			 "Delta.total.cov" = Delta.total.cov, "F.cov" = F.cov, "P.cov" = P.cov, "A.cov" = A.cov, "S.cov" = S.cov)
-			 
+  class(res) <- "myGetDeltaParams"
   return(res)
+}
+
+
+print.myGetDeltaParams<- function(x){
+#Delta 
+   cat('','Overall Agreement, Delta ','\n')
+   Delta = paste(x$Delta.total," \u00b1 ",x$Delta.total.cov)
+   Encoding(Delta) = "UTF-8"
+   print(Delta)
+ # F: conformity
+   cat('\n','Conformity, F ','\n')
+   Conformity = paste(x$F," \u00b1 ",x$F.cov)
+   Encoding(Conformity) = "UTF-8"
+   print(Conformity)
+ # P: Predictivity
+   cat('\n','Predictivity, P ','\n')
+   if(!is.null(x$P.cov)){
+	Predictivity = paste(x$P," \u00b1 ",x$P.cov)
+   }
+   else{
+	Predictivity = paste(x$P)
+   }
+   Encoding(Predictivity) = "UTF-8"
+   print(Predictivity)
+ # A: Agreement
+   cat('\n','Agreement, A ','\n')
+   Agreement = paste(x$A," \u00b1 ",x$A.cov)
+   Encoding(Agreement) = "UTF-8"
+   print(Agreement)
+ # S: sensitivity
+   cat('\n','Sensitivity, S ','\n')
+   if(!is.null(x$S.cov)){
+	sensitivity = paste(x$S," \u00b1 ",x$S.cov)
+   }
+   else{
+	sensitivity = paste(x$S)
+   }
+   Encoding(sensitivity) = "UTF-8"
+   print(sensitivity)
 }
