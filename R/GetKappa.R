@@ -40,10 +40,15 @@ GetKappa <-function(mx){
   c = (kappa - Expected * (1-kappa))^2
   SE = 1/(1-Expected)^2*sqrt((a+b-c)/n)
   res = list("kappa"=kappa,"SE"=SE)
-  class(res) <- "myGetKappa"
+  class(res) <- "GetKappa"
   return(res)
 }
 
-print.myGetKappa<- function(x){
+#' @return \code{NULL}
+#'
+#' @rdname GetKappa
+#' @export
+#' @method print GetKappa 
+print.GetKappa<- function(x){
    cat("Kappa \u00b1 S.E. = ",x$kappa, " \u00b1 ",x$SE,'\n')
 }

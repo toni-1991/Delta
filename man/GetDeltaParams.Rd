@@ -2,9 +2,12 @@
 % Please edit documentation in R/GetDeltaParams.R
 \name{GetDeltaParams}
 \alias{GetDeltaParams}
+\alias{print.GetDeltaParams}
 \title{Calculate Delta related parameters function}
 \usage{
 GetDeltaParams(mx, fixedrows, Delta, Pi, B, k, Cov)
+
+\method{print}{GetDeltaParams}(x)
 }
 \arguments{
 \item{mx}{Matrix. Agreement contingency table to perform calculations}
@@ -20,6 +23,9 @@ GetDeltaParams(mx, fixedrows, Delta, Pi, B, k, Cov)
 \item{k}{Integer. Dimension of the problem.}
 
 \item{Cov}{Matrix. Covariance matrix of Delta.}
+}
+\value{
+\code{NULL}
 }
 \description{
 This function perform all needed calculations to get all Delta related parameters. For do the exact calculations some variables previously calculated are needed.

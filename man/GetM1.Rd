@@ -2,12 +2,18 @@
 % Please edit documentation in R/GetM1.R
 \name{GetM1}
 \alias{GetM1}
+\alias{print.GetM1}
 \title{Get reduced matrix (M1) function}
 \usage{
 GetM1(datatable)
+
+\method{print}{GetM1}(x)
 }
 \arguments{
 \item{datatable}{Matrix. Expected to be square matrix with at least 2 rows (columns), non negative values and at least an element different of zero.}
+}
+\value{
+\code{NULL}
 }
 \description{
 This function reduce matrix provided by the user deleting missing categories, those j where sum(datatable[j,]) = sum(datatable[,j]) = 0.

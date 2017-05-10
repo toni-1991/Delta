@@ -2,14 +2,20 @@
 % Please edit documentation in R/GetAsinDeltaParams.R
 \name{GetAsinDeltaParams}
 \alias{GetAsinDeltaParams}
+\alias{print.GetAsinDeltaParams}
 \title{Calculate Asintotic Delta related parameters function}
 \usage{
 GetAsinDeltaParams(mx, fixedrows = TRUE)
+
+\method{print}{GetAsinDeltaParams}(x)
 }
 \arguments{
 \item{mx}{Matrix. Agreement contingency table to perform calculations}
 
 \item{fixedrows}{Boolean. Indicate if sample rows are fixed beforehand.}
+}
+\value{
+\code{NULL}
 }
 \description{
 This function perform all needed calculations to get all Delta related parameters, for a 2x2 matrix. All calculations are asintotics.

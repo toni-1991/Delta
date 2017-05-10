@@ -47,11 +47,16 @@ GetAsinDeltaParams <- function(mx,fixedrows = TRUE){
   res = list("Delta" = Delta, "Pi" = Pi,
 	  "Delta.total" = Delta.total, "F" = F, "P" = P, "A" = A, "S" = S,
 	  "Delta.total.cov" = Delta.total.cov, "F.cov" = F.cov, "P.cov" = P.cov, "A.cov" = A.cov, "S.cov" = S.cov)
-  class(res) <- "myGetAsinDeltaParams"	 
+  class(res) <- "GetAsinDeltaParams"	 
   return(res)
 }
 
-print.myGetAsinDeltaParams <- function(x){
+#' @return \code{NULL}
+#'
+#' @rdname GetAsinDeltaParams
+#' @export
+#' @method print GetAsinDeltaParams 
+print.GetAsinDeltaParams <- function(x){
 #Delta 
   cat('','Delta for each category','\n')
   print(x$Delta)

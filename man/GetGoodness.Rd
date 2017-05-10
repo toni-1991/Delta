@@ -2,9 +2,12 @@
 % Please edit documentation in R/GetGoodness.r
 \name{GetGoodness}
 \alias{GetGoodness}
+\alias{print.GetGoodness}
 \title{Calculate Goodness of fit function}
 \usage{
 GetGoodness(mx, Pi, Delta)
+
+\method{print}{GetGoodness}(x)
 }
 \arguments{
 \item{mx}{Matrix. Modified matrix to have a solution Usually GetMx$M2.}
@@ -12,6 +15,9 @@ GetGoodness(mx, Pi, Delta)
 \item{Pi}{Vector. Each element indicate the probability of classify at random an element in category i.}
 
 \item{Delta}{Vector. Each element indicate the probability of recognize an element i.}
+}
+\value{
+\code{NULL}
 }
 \description{
 This function provide an Chi-square test for the given matrix, Delta and Pi provided.

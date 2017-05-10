@@ -71,12 +71,17 @@ GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
   }
   res = list("Delta.total" = Delta.total, "F" = F, "P" = P, "A" = A, "S" = S,
 			 "Delta.total.cov" = Delta.total.cov, "F.cov" = F.cov, "P.cov" = P.cov, "A.cov" = A.cov, "S.cov" = S.cov)
-  class(res) <- "myGetDeltaParams"
+  class(res) <- "GetDeltaParams"
   return(res)
 }
 
 
-print.myGetDeltaParams<- function(x){
+#' @return \code{NULL}
+#'
+#' @rdname GetDeltaParams
+#' @export
+#' @method print GetDeltaParams 
+print.GetDeltaParams<- function(x){
 #Delta 
    cat('','Overall Agreement, Delta ','\n')
    Delta = paste(x$Delta.total," \u00b1 ",x$Delta.total.cov)

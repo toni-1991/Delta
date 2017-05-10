@@ -10,12 +10,7 @@
 #' @examples
 #' GetM1(matrix(c(1,2,0,3,4,0,0,0,0),3,3))
 
-GetM1 <-function(datatable){
-#: (A) Definicion de la Matriz M0 por eliminacion de clases vacias de la matriz de entrada datatable: M0=datatable, salvo cuando 
-#Exista i | ri=ci=0, en tal caso se elimina esa clase en M0. 
-#(B) Se debe crear una lista con los indices de las filas/columnas que se han quitado para darla como informacion en la salida  
-#(C) Se deben definir las dimensiones del problema: k?dim(M0)[1]
-  #datatable initial matrix
+GetM1 <- function(datatable) { 
   
   #Marginals of the table
   R.marg   = margin.table(datatable,1)
@@ -39,11 +34,16 @@ GetM1 <-function(datatable){
   
   #Create a list with the output
   res = list("M1" = M1, "k" = k, "Deleted" = Deleted)
-  class(res) <- "myGetM1"
+  class(res) <- "GetM1"
   return(res)
 }
 
-print.myGetM1<- function(x){
+#' @return \code{NULL}
+#'
+#' @rdname GetM1
+#' @export
+#' @method print GetM1 
+print.GetM1<- function(x){
   cat("Simplified matrix is:\n")
   print(x$M1)
   cat("The problem has ", x$k, " categories.\n")

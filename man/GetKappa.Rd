@@ -2,12 +2,18 @@
 % Please edit documentation in R/GetKappa.R
 \name{GetKappa}
 \alias{GetKappa}
+\alias{print.GetKappa}
 \title{Calculate Cohen's Kappa coefficient function}
 \usage{
 GetKappa(mx)
+
+\method{print}{GetKappa}(x)
 }
 \arguments{
 \item{mx}{Matrix. Agreement contingency table to perform calculations}
+}
+\value{
+\code{NULL}
 }
 \description{
 This function perform Cohen's Kappa coefficient calculations. The function provide the Kappa coefficient and SE.

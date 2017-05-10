@@ -45,12 +45,16 @@ GetGoodness <- function(mx,Pi,Delta){
 
   # Standard output for chisq.test is X-squared = 3.2328, df = 3, p-value = 0.3571
   res = list("X.squared" = chi.squared, "df" = df, "p.value" = pval, "E.matrix" = E.matrix)
-  class(res) <- "myGetGoodness"
+  class(res) <- "GetGoodness"
   return(res)
 }
 
-
-print.myGetGoodness<- function(x){
+#' @return \code{NULL}
+#'
+#' @rdname GetGoodness
+#' @export
+#' @method print GetGoodness 
+print.GetGoodness<- function(x){
    cat('X-squared =', x$X.squared, ', df =', x$df,', p-value =',x$p.value,'\n')
    cat('Expected matrix:','\n')
    print(x$E.matrix)
