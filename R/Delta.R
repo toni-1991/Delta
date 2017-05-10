@@ -127,20 +127,20 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   }
   
   res$E.matrix 	= E.matrix
-  Chisq 		= paste("Chi-squared = ",X.sq, "( d.f. = ",df, ")")
+  Chisq 		= paste("Chi-squared = ", round(X.sq,dplaces), "( d.f. = ",df, ")")
   if (tp == "2.0" | tp == "3.0") {
-    Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, "* \u00b1 ",kappa.SE, "*")
+    Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
 	Summary1.Note = "* A total of rows or column is equal to zero: Results obteined adding 0.5 to all cells. "
   }
   else if (tp == "2.1" | tp == "3.1") {
-    Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, " \u00b1 ",kappa.SE, "*")
+    Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
 	Summary1.Note = "*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data) "
   } 
   else {
-    Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, " \u00b1 ",kappa.SE)
+    Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
 	Summary1.Note = ""
   }
-  Delta.results	= paste("Delta \u00b1 S.E. = ",res.Params$Delta.total, " \u00b1 ",res.Params$Delta.total.cov)
+  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.Params$Delta.total,dplaces), " \u00b1 ",round(res.Params$Delta.total.cov,dplaces))
   
   Encoding(Chisq) = "UTF-8"
   Encoding(Kappa.results) = "UTF-8"
@@ -151,10 +151,10 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   res$Summary1.Note = Summary1.Note
   res$Cov		= Cov_mix
 
-  Agreement = paste(res.Params$A," \u00b1 ",res.Params$A.cov)
-  Conformity = paste(res.Params$F," \u00b1 ",res.Params$F.cov)
-  Predictivity = paste(res.Params$P," \u00b1 ",res.Params$P.cov)
-  Consistency = paste(res.Params$S," \u00b1 ",res.Params$S.cov)
+  Agreement = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.Params$A.cov,dplaces))
+  Conformity = paste(round(res.Params$F,dplaces)," \u00b1 ",round(res.Params$F.cov,dplaces))
+  Predictivity = paste(round(res.Params$P,dplaces)," \u00b1 ",round(res.Params$P.cov,dplaces))
+  Consistency = paste(round(res.Params$S,dplaces)," \u00b1 ",round(res.Params$S.cov,dplaces))
   Encoding(Agreement) = "UTF-8"
   Encoding(Conformity) = "UTF-8"
   Encoding(Predictivity) = "UTF-8"
@@ -164,28 +164,28 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   if (is.null(Pi)){
     Pi		= rep(0,k)
   }
-  Table = data.frame(1:k,Delta,Pi,Agreement,Conformity,Predictivity,Consistency)
+  Table = data.frame(1:k,round(Delta,dplaces),round(Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
   if (tp == "3.1" ){
     colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement","Conformity","Predictivity","Consistency")
     res$Table1 = Table
-    res$Overall = res.Params$Delta.total
-    res$Overall.SE  = res.Params$Delta.total.cov
+    res$Overall = round(res.Params$Delta.total,dplaces)
+    res$Overall.SE  = round(res.Params$Delta.total.cov,dplaces)
     Note = "The problem has infinite solutions for pi. For this reason the values of S.E. have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *."
     res$Note2 = Note
   } 
   else if (tp == "3.4") {
     colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement","Conformity","Predictivity","Consistency")
     res$Table1 = Table
-    res$Overall = res.Params$Delta.total
-    res$Overall.SE  = res.Params$Delta.total.cov
+    res$Overall = round(res.Params$Delta.total,dplaces)
+    res$Overall.SE  = round(res.Params$Delta.total.cov,dplaces)
     Note = "At least one estimation of 'delta i' or of 'pi i' falls on the boundary of the parametric space. For this reason the values of S.E. have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *."
     res$Note2 = Note 
   }
   else {
     colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
     res$Table1 = Table
-    res$Overall = res.Params$Delta.total
-    res$Overall.SE  = res.Params$Delta.total.cov
+    res$Overall = round(res.Params$Delta.total,dplaces)
+    res$Overall.SE  = round(res.Params$Delta.total.cov,dplaces)
   }
 
   if (delta.samplingtype == 1) {
@@ -206,22 +206,22 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 
   if (tp == "3.1" ){
     res$Table2 = Table
-    res$Overall2 = res.Params$Delta.total
-    res$Overall2.SE  = res.Params$Delta.total.cov
+    res$Overall2 = round(res.Params$Delta.total,dplaces)
+    res$Overall2.SE  = round(res.Params$Delta.total.cov,dplaces)
     Note = "The problem has infinite solutions for pi. For this reason the values of S.E. have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *."
     res$Note3 = Note
   } 
   else if (tp == "3.4") {
     res$Table2 = Table
-    res$Overall2 = res.Params$Delta.total
-    res$Overall2.SE  = res.Params$Delta.total.cov
+    res$Overall2 = round(res.Params$Delta.total,dplaces)
+    res$Overall2.SE  = round(res.Params$Delta.total.cov,dplaces)
     Note = "At least one estimation of 'delta i' or of 'pi i' falls on the boundary of the parametric space. For this reason the values of S.E. have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *."
     res$Note3 = Note 
   }
   else {
     res$Table2 = Table
-    res$Overall2 = res.Params$Delta.total
-    res$Overall2.SE  = res.Params$Delta.total.cov
+    res$Overall2 = round(res.Params$Delta.total,dplaces)
+    res$Overall2.SE  = round(res.Params$Delta.total.cov,dplaces)
   }
 
   #Asintotic solutions
@@ -238,19 +238,19 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
     }
 	
 	  if (tp == "2.0" ) {
-		Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, "* \u00b1 ",kappa.SE, "*")
+		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
 		Summary2.Note = "* A total of rows or column is equal to zero: Results obteined adding 0.5 to all cells. "
 	  }
 	  else if (tp == "2.1" ) {
-		Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, " \u00b1 ",kappa.SE, "*")
+		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
 		Summary2.Note = "*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data) "
 	  }
 	  else {
-		Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, " \u00b1 ",kappa.SE)
+		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
 		Summary2.Note = ""
 	  }
 
-	  Delta.results	= paste("Delta \u00b1 S.E. = ",res.M4$Delta.total, " \u00b1 ",res.M4$Delta.total.cov)
+	  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.M4$Delta.total,dplaces), " \u00b1 ",round(res.M4$Delta.total.cov,dplaces))
 	  
 	  Encoding(Kappa.results) = "UTF-8"
 	  Encoding(Delta.results) = "UTF-8"
@@ -259,21 +259,21 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  res$Summary2 = Summary2
 	  res$Summary2.Note = Summary2.Note
 	  
-	  Agreement = paste(res.M4$A," \u00b1 ",res.M4$A.cov)
-	  Conformity = paste(res.M4$F," \u00b1 ",res.M4$F.cov)
-	  Predictivity = paste(res.M4$P," \u00b1 ",res.M4$P.cov)
-	  Consistency = paste(res.M4$S," \u00b1 ",res.M4$S.cov)
+	  Agreement = paste(round(res.M4$A,dplaces)," \u00b1 ",round(res.M4$A.cov,dplaces))
+	  Conformity = paste(round(res.M4$F,dplaces)," \u00b1 ",round(res.M4$F.cov,dplaces))
+	  Predictivity = paste(round(res.M4$P,dplaces)," \u00b1 ",round(res.M4$P.cov,dplaces))
+	  Consistency = paste(round(res.M4$S,dplaces)," \u00b1 ",round(res.M4$S.cov,dplaces))
 	  Encoding(Agreement) = "UTF-8"
 	  Encoding(Conformity) = "UTF-8"
 	  Encoding(Predictivity) = "UTF-8"
 	  Encoding(Consistency) = "UTF-8"
 	  
-	  Table = data.frame(1:k,Delta,Pi,Agreement,Conformity,Predictivity,Consistency)
+	  Table = data.frame(1:k,round(res.M4$Delta,dplaces),round(res.M4$Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
 	  if (tp == "2.1" ){
 		colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement (*)","Conformity (*)","Predictivity (*)","Consistency (*)")
 		res$Table3 = Table
-		res$Overall3 = res.M4$Delta.total
-		res$Overall3.SE  = res.M4$Delta.total.cov
+		res$Overall3 = round(res.M4$Delta.total,dplaces)
+		res$Overall3.SE  = round(res.M4$Delta.total.cov,dplaces)
 		Note = "The estimations of 'delta i' falls on the boundary of the parametric space. For this reason the values of S.E. 
 		        have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *. "
 		res$Note5 = Note
@@ -281,8 +281,8 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  else {
 		colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
 		res$Table3 = Table
-		res$Overall3 = res.M4$Delta.total
-		res$Overall3.SE  = res.M4$Delta.total.cov
+		res$Overall3 = round(res.M4$Delta.total,dplaces)
+		res$Overall3.SE  = round(res.M4$Delta.total.cov,dplaces)
 	  }
 	  
 	  
@@ -304,16 +304,16 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 
 	  if (tp == "3.1" ){
 		res$Table4 = Table
-		res$Overall4 = res.M4$Delta.total
-		res$Overall4.SE  = res.M4$Delta.total.cov
+		res$Overall4 = round(res.M4$Delta.total,dplaces)
+		res$Overall4.SE  = round(res.M4$Delta.total.cov,dplaces)
 		Note = "The estimations of 'delta i' falls on the boundary of the parametric space. For this reason the values of S.E. 
 		        have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *. "
 		res$Note6 = Note
 	  } 
 	  else {
 		res$Table5 = Table
-		res$Overall5 = res.M4$Delta.total
-		res$Overall5.SE  = res.M4$Delta.total.cov
+		res$Overall5 = round(res.M4$Delta.total,dplaces)
+		res$Overall5.SE  = round(res.M4$Delta.total.cov,dplaces)
 	  }
 	  
 	  #Extra 
@@ -322,19 +322,19 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	 
 	
 	  if (tp == "2.0" ) {
-		Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, "* \u00b1 ",kappa.SE, "*")
+		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
 		Summary2.Note = "* A total of rows or column is equal to zero: Results obteined adding 0.5 to all cells. "
 	  }
 	  else if (tp == "2.1" ) {
-		Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, " \u00b1 ",kappa.SE, "*")
+		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
 		Summary2.Note = "*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data) "
 	  }
 	  else {
-		Kappa.results	= paste("Kappa \u00b1 S.E. = ",kappa.val, " \u00b1 ",kappa.SE)
+		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
 		Summary2.Note = ""
 	  }
 
-	  Delta.results	= paste("Delta \u00b1 S.E. = ",res.M5$Delta.total, " \u00b1 ",res.M5$Delta.total.cov)
+	  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.M5$Delta.total,dplaces), " \u00b1 ",round(res.M5$Delta.total.cov,dplaces))
 	  
 	  Encoding(Kappa.results) = "UTF-8"
 	  Encoding(Delta.results) = "UTF-8"
@@ -343,20 +343,20 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  res$Summary3 = Summary2
 	  res$Summary3.Note = Summary2.Note
 	  
-	  Agreement = paste(res.M5$A," \u00b1 ",res.M5$A.cov)
-	  Conformity = paste(res.M5$F," \u00b1 ",res.M5$F.cov)
-	  Predictivity = paste(res.M5$P," \u00b1 ",res.M5$P.cov)
-	  Consistency = paste(res.M5$S," \u00b1 ",res.M5$S.cov)
+	  Agreement = paste(round(res.M5$A,dplaces)," \u00b1 ",round(res.M5$A.cov,dplaces))
+	  Conformity = paste(round(res.M5$F,dplaces)," \u00b1 ",round(res.M5$F.cov,dplaces))
+	  Predictivity = paste(round(res.M5$P,dplaces)," \u00b1 ",round(res.M5$P.cov,dplaces))
+	  Consistency = paste(round(res.M5$S,dplaces)," \u00b1 ",round(res.M5$S.cov,dplaces))
 	  Encoding(Agreement) = "UTF-8"
 	  Encoding(Conformity) = "UTF-8"
 	  Encoding(Predictivity) = "UTF-8"
 	  Encoding(Consistency) = "UTF-8"
 	  
-	  Table = data.frame(1:k,Delta,Pi,Agreement,Conformity,Predictivity,Consistency)
+	  Table = data.frame(1:k,round(res.M5$Delta,dplaces),round(res.M5$Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
 	  colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
 	  res$Table6 = Table
-	  res$Overall6 = res.M5$Delta.total
-	  res$Overall6.SE  = res.M5$Delta.total.cov
+	  res$Overall6 = round(res.M5$Delta.total,dplaces)
+	  res$Overall6.SE  = round(res.M5$Delta.total.cov,dplaces)
 	  
 	  
 	  if (delta.samplingtype == 1) {
@@ -376,8 +376,8 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  }
 
 	  res$Table7 = Table
-	  res$Overall7 = res.M5$Delta.total
-	  res$Overall7.SE  = res.M5$Delta.total.cov
+	  res$Overall7 = round(res.M5$Delta.total,dplaces)
+	  res$Overall7.SE  = round(res.M5$Delta.total.cov,dplaces)
   }
 
 return(res)
