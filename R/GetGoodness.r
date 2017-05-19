@@ -20,7 +20,13 @@ GetGoodness <- function(mx,Pi,Delta){
   #In case of Null pi, set to 0
   if (is.null(Pi)){
     Pi		= rep(0,dim.matrix)
-    Delta		= rep(1,dim.matrix)
+    Delta	= rep(1,dim.matrix)
+  }
+  
+  #In case tp == "2.X", delta and pi should have 3 elements;
+  if (length(Delta) == 2){
+    Delta[3] = 1
+    Pi[3] = 0
   }
 
   #Define matrix
