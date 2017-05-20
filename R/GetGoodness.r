@@ -24,10 +24,10 @@ GetGoodness <- function(mx,Pi,Delta){
   }
   
   #In case tp == "2.X", delta and pi should have 3 elements;
-  if (length(Delta) == 2){
-    Delta[3] = 1
-    Pi[3] = 0
-  }
+  #if (length(Delta) == 2){
+  #  Delta[3] = 1
+  #  Pi[3] = 0
+  #}
 
   #Define matrix
   E.matrix		= (R.marg * (1 - Delta)) %*% t(Pi)
