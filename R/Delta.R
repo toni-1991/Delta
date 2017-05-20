@@ -26,13 +26,13 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   delta.samplingtype = CheckInput(datatable,fixedrows ,gstandard ,maxits,tol,dplaces)
 
   #Keep original size
-  k_0 = dim(datatable)[1]
+  k_0 	= dim(datatable)[1]
 
   #Calculate matrix deleting Unnecessary rows
-  res = GetM1(datatable)
-  M1 = res$M1
-  k  = res$k
-  Del_rows = res$Deleted
+  res 		= GetM1(datatable)
+  M1  		= res$M1
+  k   		= res$k
+  Del_rows 	= res$Deleted
 
   #Get type of problem
   tp = GetProblemType(M1,k)
@@ -58,15 +58,21 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	Pi 		= res.Pi$Pi
 	Delta 	= res.Pi$Delta
 	B 		= res.Pi$B
-    #mat will be the matrix to be used for calcs
+   	#mat will be the matrix to be used for calcs
 	mat = M2
   
 	#Goodnes of fit to the model
-    res = GetGoodness(M2,Pi,Delta)
+        res = GetGoodness(mat,Pi,Delta)
 	X.sq 	= res$X.squared
 	df 		= res$df
 	p.val 	= res$p.value
 	E.matrix = res$E.matrix
+	  
+	#Update Delta and Pi to correct size in cases 2.X
+	if (k==2){
+	  Pi 	= Pi[-3]
+	  Delta = Delta[-3]
+	}
 	  
 	#For 3.1 and 3.4, redo calcs with M3 for delta and pi
 	#To avoid issues with tp = 3.1, tp will be fixed to 3.4
