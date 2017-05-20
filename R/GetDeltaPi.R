@@ -38,15 +38,15 @@ GetDeltaPi <-function(mx,tp,tol = 1e-12,maxits = 1000){
               term * sqrt(round((B + (C.marg - R.marg))^2 - 4 * B * (C.marg - diag.matrix),10)))/(2*B)
     Delta   = (diag.matrix - R.marg * Pi)/(R.marg * (1 - Pi))
 
-    if (tp == "2.0" | tp == "2.2"){
-      Pi = Pi[-3]
-      Delta = Delta[-3]
-    }
+    #if (tp == "2.0" | tp == "2.2"){
+    #  Pi = Pi[-3]
+    #  Delta = Delta[-3]
+    #}
   } #WARNING: This case is not in specs, susceptible to change
   else if (tp == "2.1"){
-    Pi 	    = rep(NULL,2)
-    Delta 	= rep(1, 2)
-    term 	= rep(-1, 2)
+    Pi 	    = rep(NULL,3)
+    Delta 	= rep(1, 3)
+    term 	= rep(-1, 3)
     B 	    = 0
   }
   else {
