@@ -9,7 +9,7 @@ print.Delta<- function(x){
    tp = x$tp
    samplingtype = x$samplingtype
    
-   cat("               RESULTS","\n","\n")
+   cat("               RESULTS","\n")
    if (x$k != x$k0){
 	if (x$k == x$k0-1){
 	   cat("Category i = ",x$Del_rows, " had been deleted from the problem because r_i = c_i = 0",'\n')
@@ -53,7 +53,7 @@ print.Delta<- function(x){
 
     #Little summary
     cat('\n',"               SUMMARY: Goodness of Fit + Kappa + Delta",'\n')
-    print(x$Summary)
+    print(x$Summary, row.names = FALSE)
     #Note under some cases;
     if (tp == "2.0" | tp == "3.0") {
       cat("* A total of rows or column is equal to zero: Results obtained adding 0.5 to all cells. ",'\n')
@@ -63,14 +63,19 @@ print.Delta<- function(x){
     }
 	
 	#HIDDEN RESULTS: Cov matrix
-	#Warning, is mixed covariance or is Delta Delta?
 	cat('\n',"Covariance Matrix = Cov(Delta,Pi)",'\n')
-	print(x$Cov)
+	cat('Cov(Delta,Delta)','\n')
+	print(x$Cov_Delta)
+	cat('\n','Cov(Delta,Pi)','\n')
+	print(x$Cov_mix)
+	cat('\n','Cov(Pi,Pi)','\n')
+	print(x$Cov_Pi)
+	
 	#HIDDEN RESULTS: All model parameters
 	temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E.")
 	Encoding(temp) = "UTF-8"
 	cat('\n',temp,'\n')
-	print(x$Fullparamstable)
+	print(x$Fullparamstable, row.names = FALSE)
 	temp = paste(x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
 	Encoding(temp) = "UTF-8"
 	print(temp)
@@ -105,7 +110,7 @@ print.Delta<- function(x){
 	  cat("There isn't a standard observer",'\n')
 	}
 
-	print(x$Paramstable)
+	print(x$Paramstable, row.names = FALSE)
 	temp = paste(x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
 	Encoding(temp) = "UTF-8"
 	cat(temp,'\n')
@@ -131,7 +136,7 @@ print.Delta<- function(x){
 	  }
 	  
       cat('\n',"               SUMMARY: Kappa + Delta",'\n')
-	  print(x$Summary_AN)
+	  print(x$Summary_AN, row.names = FALSE)
 	  
 	  if (tp == "2.0" ) {
 		cat("* A total of rows or column is equal to zero: Results obtained adding 0.5 to all cells. ",'\n')
@@ -144,7 +149,7 @@ print.Delta<- function(x){
       temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E. (Asintotic Normal)")
 	  Encoding(temp) = "UTF-8"
 	  cat('\n',temp,'\n')
-	  print(x$Fullparamstable_AN)
+	  print(x$Fullparamstable_AN, row.names = FALSE)
       temp = paste(x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
 	  Encoding(temp) = "UTF-8"
 	  cat(temp,'\n')
@@ -173,7 +178,7 @@ print.Delta<- function(x){
 	  else {
 	    cat("There isn't a standard observer",'\n')
 	  }
-	  print(x$Paramstable_AN)
+	  print(x$Paramstable_AN, row.names = FALSE)
 	  temp = paste(x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
 	  Encoding(temp) = "UTF-8"
 	  cat(temp,'\n')
@@ -189,8 +194,8 @@ print.Delta<- function(x){
       cat('\n',"Data analyzed by Delta model",'\n')
 	  print(x$M_AE)
 
-    cat('\n',"               SUMMARY: Kappa + Delta",'\n')
-	  print(x$Summary_AE)
+      cat('\n',"               SUMMARY: Kappa + Delta",'\n')
+	  print(x$Summary_AE, row.names = FALSE)
 	  
 	  if (tp == "2.0" ) {
 		cat("* A total of rows or column is equal to zero: Results obtained adding 0.5 to all cells. ",'\n')
@@ -203,7 +208,7 @@ print.Delta<- function(x){
       temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E. (Asintotic Extra)")
 	  Encoding(temp) = "UTF-8"
 	  cat('\n',temp,'\n')
-	  print(x$Fullparamstable_AE)
+	  print(x$Fullparamstable_AE, row.names = FALSE)
       temp = paste(x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AN)
 	  Encoding(temp) = "UTF-8"
 	  cat(temp,'\n')
@@ -228,7 +233,7 @@ print.Delta<- function(x){
 	  else {
 	    cat("There isn't a standard observer",'\n')
 	  }
-	  print(x$Paramstable_AE)
+	  print(x$Paramstable_AE, row.names = FALSE)
 	  temp = paste(x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AN)
 	  Encoding(temp) = "UTF-8"
 	  cat('\n',temp,'\n')
