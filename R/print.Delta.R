@@ -26,7 +26,7 @@ print.Delta<- function(x){
 	#Special note and M2 shown in some cases;
     if (x$tp == "2.0" | tp == "2.1" | tp == "2.2") {
       cat("The problem has infinite solutions. The following solution has been obtained by creating an extra",'\n',
-	  "(and fictitious) class where c3=r3=x33=1 and by adding 0.5 to all the observations. ",'\n','\n',
+	  "(and fictitious) class where c_3=r_3=x_33=1 and by adding 0.5 to all the observations. ",'\n','\n',
 	  "Data analyzed by Delta model",'\n')
   	  print(x$M2)
     }
@@ -59,7 +59,7 @@ print.Delta<- function(x){
       cat("* A total of rows or column is equal to zero: Results obtained adding 0.5 to all cells. ",'\n')
     }
     else if (tp == "2.1" | tp == "3.1") {
-      cat("*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data)")
+      cat("*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data)",'\n')
     }
 	
 	#HIDDEN RESULTS: Cov matrix

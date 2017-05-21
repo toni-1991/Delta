@@ -107,187 +107,62 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
     res = list("Raw.matrix" = datatable, "M1" = M1)
   }
   
+  res$Del_rows = Del_rows
   res$tp = tp
   res$k = k
   res$k0 = k_0
   res$samplingtype = delta.samplingtype
   
-  res$E_matrix 	= E.matrix
-  Chisq 		=     paste("Chi-squared =", round(X.sq,dplaces), "(d.f.=",df,"); p=", round(p.val,dplaces))
-  if (tp == "2.0" | tp == "3.0") {
-    Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
-  }
-  else if (tp == "2.1" | tp == "3.1") {
-    Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
-  } 
-  else {
-    Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
-  }
-  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.Params$Delta.total,dplaces), " \u00b1 ",round(res.Params$Delta.total.cov,dplaces))
-  
-  Encoding(Chisq) = "UTF-8"
-  Encoding(Kappa.results) = "UTF-8"
-  Encoding(Delta.results) = "UTF-8"
-
-  Summary1 = data.frame(c(Chisq,Kappa.results,Delta.results))
-  names(Summary1)	= "Summary"
-  res$Summary 		= Summary1
-  res$Cov_Delta		= Cov_Delta
-  res$Cov_mix		= Cov_mix
-  res$Cov_Pi		= Cov_Pi
-
-  Agreement = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.Params$A.cov,dplaces))
-  Conformity = paste(round(res.Params$F,dplaces)," \u00b1 ",round(res.Params$F.cov,dplaces))
-  Predictivity = paste(round(res.Params$P,dplaces)," \u00b1 ",round(res.Params$P.cov,dplaces))
-  Consistency = paste(round(res.Params$S,dplaces)," \u00b1 ",round(res.Params$S.cov,dplaces))
-  Encoding(Agreement) = "UTF-8"
-  Encoding(Conformity) = "UTF-8"
-  Encoding(Predictivity) = "UTF-8"
-  Encoding(Consistency) = "UTF-8"
-
-  
-  if (is.null(Pi)){
-    Pi		= rep(0,k)
-  }
-  Table = data.frame(1:k,round(Delta,dplaces),round(Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
-  if (tp == "3.1" | tp == "3.4"){
-    colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement","Conformity","Predictivity","Consistency")
-  } 
-  else {
-    colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
-  }
-  
-  res$Fullparamstable = Table
-  res$Deltaoverall = round(res.Params$Delta.total,dplaces)
-  res$Deltaoverall_SE  = round(res.Params$Delta.total.cov,dplaces)
-
-  if (delta.samplingtype == 1) {
-    Table = Table[,c(-6,-7)]
-  }
-  else if (delta.samplingtype == 2) {
-    Table = Table[,c(-5,-6,-7)]
-  }
-  else if (delta.samplingtype == 3) {
-    Table = Table[,c(-5,-6,-7)]
-  }
-  else if (delta.samplingtype == 4) {
-    Table = Table[,-7]
-  }
-  else if (delta.samplingtype == 5) {
-    Table = Table[,c(-5,-6)]
-  }
-
-  res$Paramstable = Table 
-
-  #Asintotic solutions
-  # res.m4 and res.M5
-  if (k==2){
-    #Salida 8
-    if (tp == 2.0){
-	  res$M_AN = M4
-    }
-    else {
-	  res$M_AN = M1
-    }
-	
-	if (tp == "2.0" ) {
-	  Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
-	}
-	else if (tp == "2.1" ) {
-	  Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
-	}
-	else {
-	  Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
-	}
-
-	Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.M4$Delta.total,dplaces), " \u00b1 ",round(res.M4$Delta.total.cov,dplaces))
-	
-	Encoding(Kappa.results) = "UTF-8"
-	Encoding(Delta.results) = "UTF-8"
-
-	Summary2 = data.frame(c(Kappa.results,Delta.results))
-    names(Summary2)	= "Summary"
-	res$Summary_AN = Summary2
-	
-	Agreement = paste(round(res.M4$A,dplaces)," \u00b1 ",round(res.M4$A.cov,dplaces))
-	Conformity = paste(round(res.M4$F,dplaces)," \u00b1 ",round(res.M4$F.cov,dplaces))
-	Predictivity = paste(round(res.M4$P,dplaces)," \u00b1 ",round(res.M4$P.cov,dplaces))
-	Consistency = paste(round(res.M4$S,dplaces)," \u00b1 ",round(res.M4$S.cov,dplaces))
-	Encoding(Agreement) = "UTF-8"
-	Encoding(Conformity) = "UTF-8"
-	Encoding(Predictivity) = "UTF-8"
-	Encoding(Consistency) = "UTF-8"
-	
-	Table = data.frame(1:k,round(res.M4$Delta,dplaces),round(res.M4$Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
-	if (tp == "2.1" ){
-	  colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement (*)","Conformity (*)","Predictivity (*)","Consistency (*)")
-	} 
-	else {
-		colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
-	}
-	res$Fullparamstable_AN = Table
-	res$Deltaoverall_AN = round(res.M4$Delta.total,dplaces)
-	res$Deltaoverall_SE_AN  = round(res.M4$Delta.total.cov,dplaces)
-	  
-	  
-	if (delta.samplingtype == 1) {
-	  Table = Table[,c(-6,-7)]
-	}
-	else if (delta.samplingtype == 2) {
-	  Table = Table[,c(-5,-6,-7)]
-	}
-	else if (delta.samplingtype == 3) {
-	  Table = Table[,c(-5,-6,-7)]
-	}
-	else if (delta.samplingtype == 4) {
-	  Table = Table[,-7]
-	}
-	else if (delta.samplingtype == 5) {
-	  Table = Table[,c(-5,-6)]
-	}
-
-	res$Paramstable_AN = Table
-	  
-	  #Extra 
-	
-	  res$M_AE = M5
-	 
-	
-	  if (tp == "2.0" ) {
+  if (k >= 2){
+	  res$E_matrix 	= E.matrix
+	  Chisq 		=     paste("Chi-squared =", round(X.sq,dplaces), "(d.f.=",df,"); p=", round(p.val,dplaces))
+	  if (tp == "2.0" | tp == "3.0") {
 		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
 	  }
-	  else if (tp == "2.1" ) {
+	  else if (tp == "2.1" | tp == "3.1") {
 		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
-	  }
+	  } 
 	  else {
 		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
 	  }
-
-	  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.M5$Delta.total,dplaces), " \u00b1 ",round(res.M5$Delta.total.cov,dplaces))
+	  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.Params$Delta.total,dplaces), " \u00b1 ",round(res.Params$Delta.total.cov,dplaces))
 	  
+	  Encoding(Chisq) = "UTF-8"
 	  Encoding(Kappa.results) = "UTF-8"
 	  Encoding(Delta.results) = "UTF-8"
 
-	  Summary2 = data.frame(c(Kappa.results,Delta.results))
-      names(Summary2)	= "Summary"
-	  res$Summary_AE = Summary2
-	  
-	  Agreement = paste(round(res.M5$A,dplaces)," \u00b1 ",round(res.M5$A.cov,dplaces))
-	  Conformity = paste(round(res.M5$F,dplaces)," \u00b1 ",round(res.M5$F.cov,dplaces))
-	  Predictivity = paste(round(res.M5$P,dplaces)," \u00b1 ",round(res.M5$P.cov,dplaces))
-	  Consistency = paste(round(res.M5$S,dplaces)," \u00b1 ",round(res.M5$S.cov,dplaces))
+	  Summary1 = data.frame(c(Chisq,Kappa.results,Delta.results))
+	  names(Summary1)	= "Summary"
+	  res$Summary 		= Summary1
+	  res$Cov_Delta		= Cov_Delta
+	  res$Cov_mix		= Cov_mix
+	  res$Cov_Pi		= Cov_Pi
+
+	  Agreement = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.Params$A.cov,dplaces))
+	  Conformity = paste(round(res.Params$F,dplaces)," \u00b1 ",round(res.Params$F.cov,dplaces))
+	  Predictivity = paste(round(res.Params$P,dplaces)," \u00b1 ",round(res.Params$P.cov,dplaces))
+	  Consistency = paste(round(res.Params$S,dplaces)," \u00b1 ",round(res.Params$S.cov,dplaces))
 	  Encoding(Agreement) = "UTF-8"
 	  Encoding(Conformity) = "UTF-8"
 	  Encoding(Predictivity) = "UTF-8"
 	  Encoding(Consistency) = "UTF-8"
+
 	  
-	  Table = data.frame(1:k,round(res.M5$Delta,dplaces),round(res.M5$Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
-	  colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
-	  res$Fullparamstable_AE = Table
-	  res$Deltaoverall_AE = round(res.M5$Delta.total,dplaces)
-	  res$Deltaoverall_SE_AN  = round(res.M5$Delta.total.cov,dplaces)
+	  if (is.null(Pi)){
+		Pi		= rep(0,k)
+	  }
+	  Table = data.frame(1:k,round(Delta,dplaces),round(Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
+	  if (tp == "3.1" | tp == "3.4"){
+		colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement","Conformity","Predictivity","Consistency")
+	  } 
+	  else {
+		colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
+	  }
 	  
-	  
+	  res$Fullparamstable = Table
+	  res$Deltaoverall = round(res.Params$Delta.total,dplaces)
+	  res$Deltaoverall_SE  = round(res.Params$Delta.total.cov,dplaces)
+
 	  if (delta.samplingtype == 1) {
 		Table = Table[,c(-6,-7)]
 	  }
@@ -304,8 +179,136 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		Table = Table[,c(-5,-6)]
 	  }
 
-	  res$Paramstable_AE = Table
-  }
+	  res$Paramstable = Table 
+
+	  #Asintotic solutions
+	  # res.m4 and res.M5
+	  if (k==2){
+		#Salida 8
+		if (tp == 2.0){
+		  res$M_AN = M4
+		}
+		else {
+		  res$M_AN = M1
+		}
+		
+		if (tp == "2.0" ) {
+		  Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
+		}
+		else if (tp == "2.1" ) {
+		  Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
+		}
+		else {
+		  Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
+		}
+
+		Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.M4$Delta.total,dplaces), " \u00b1 ",round(res.M4$Delta.total.cov,dplaces))
+		
+		Encoding(Kappa.results) = "UTF-8"
+		Encoding(Delta.results) = "UTF-8"
+
+		Summary2 = data.frame(c(Kappa.results,Delta.results))
+		names(Summary2)	= "Summary"
+		res$Summary_AN = Summary2
+		
+		Agreement = paste(round(res.M4$A,dplaces)," \u00b1 ",round(res.M4$A.cov,dplaces))
+		Conformity = paste(round(res.M4$F,dplaces)," \u00b1 ",round(res.M4$F.cov,dplaces))
+		Predictivity = paste(round(res.M4$P,dplaces)," \u00b1 ",round(res.M4$P.cov,dplaces))
+		Consistency = paste(round(res.M4$S,dplaces)," \u00b1 ",round(res.M4$S.cov,dplaces))
+		Encoding(Agreement) = "UTF-8"
+		Encoding(Conformity) = "UTF-8"
+		Encoding(Predictivity) = "UTF-8"
+		Encoding(Consistency) = "UTF-8"
+		
+		Table = data.frame(1:k,round(res.M4$Delta,dplaces),round(res.M4$Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
+		if (tp == "2.1" ){
+		  colnames(Table) = c("Class","Delta (*)","Pi (*)","Agreement (*)","Conformity (*)","Predictivity (*)","Consistency (*)")
+		} 
+		else {
+			colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
+		}
+		res$Fullparamstable_AN = Table
+		res$Deltaoverall_AN = round(res.M4$Delta.total,dplaces)
+		res$Deltaoverall_SE_AN  = round(res.M4$Delta.total.cov,dplaces)
+		  
+		  
+		if (delta.samplingtype == 1) {
+		  Table = Table[,c(-6,-7)]
+		}
+		else if (delta.samplingtype == 2) {
+		  Table = Table[,c(-5,-6,-7)]
+		}
+		else if (delta.samplingtype == 3) {
+		  Table = Table[,c(-5,-6,-7)]
+		}
+		else if (delta.samplingtype == 4) {
+		  Table = Table[,-7]
+		}
+		else if (delta.samplingtype == 5) {
+		  Table = Table[,c(-5,-6)]
+		}
+
+		res$Paramstable_AN = Table
+		  
+		  #Extra 
+		
+		  res$M_AE = M5
+		 
+		
+		  if (tp == "2.0" ) {
+			Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
+		  }
+		  else if (tp == "2.1" ) {
+			Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces), "*")
+		  }
+		  else {
+			Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), " \u00b1 ",round(kappa.SE,dplaces))
+		  }
+
+		  Delta.results	= paste("Delta \u00b1 S.E. = ",round(res.M5$Delta.total,dplaces), " \u00b1 ",round(res.M5$Delta.total.cov,dplaces))
+		  
+		  Encoding(Kappa.results) = "UTF-8"
+		  Encoding(Delta.results) = "UTF-8"
+
+		  Summary2 = data.frame(c(Kappa.results,Delta.results))
+		  names(Summary2)	= "Summary"
+		  res$Summary_AE = Summary2
+		  
+		  Agreement = paste(round(res.M5$A,dplaces)," \u00b1 ",round(res.M5$A.cov,dplaces))
+		  Conformity = paste(round(res.M5$F,dplaces)," \u00b1 ",round(res.M5$F.cov,dplaces))
+		  Predictivity = paste(round(res.M5$P,dplaces)," \u00b1 ",round(res.M5$P.cov,dplaces))
+		  Consistency = paste(round(res.M5$S,dplaces)," \u00b1 ",round(res.M5$S.cov,dplaces))
+		  Encoding(Agreement) = "UTF-8"
+		  Encoding(Conformity) = "UTF-8"
+		  Encoding(Predictivity) = "UTF-8"
+		  Encoding(Consistency) = "UTF-8"
+		  
+		  Table = data.frame(1:k,round(res.M5$Delta,dplaces),round(res.M5$Pi,dplaces),Agreement,Conformity,Predictivity,Consistency)
+		  colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
+		  res$Fullparamstable_AE = Table
+		  res$Deltaoverall_AE = round(res.M5$Delta.total,dplaces)
+		  res$Deltaoverall_SE_AN  = round(res.M5$Delta.total.cov,dplaces)
+		  
+		  
+		  if (delta.samplingtype == 1) {
+			Table = Table[,c(-6,-7)]
+		  }
+		  else if (delta.samplingtype == 2) {
+			Table = Table[,c(-5,-6,-7)]
+		  }
+		  else if (delta.samplingtype == 3) {
+			Table = Table[,c(-5,-6,-7)]
+		  }
+		  else if (delta.samplingtype == 4) {
+			Table = Table[,-7]
+		  }
+		  else if (delta.samplingtype == 5) {
+			Table = Table[,c(-5,-6)]
+		  }
+
+		  res$Paramstable_AE = Table
+	  }
+	}
   class(res) <- "Delta"
   return(res)
 
