@@ -76,9 +76,8 @@ print.Delta<- function(x){
 	Encoding(temp) = "UTF-8"
 	cat('\n',temp,'\n')
 	print(x$Fullparamstable, row.names = FALSE)
-	temp = paste(x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
+	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
 	Encoding(temp) = "UTF-8"
-	print(temp)
 	cat(temp,'\n')
 	if (tp == "3.1"){
 	  cat("The problem has infinite solutions for pi. For this reason the values of S.E. have been obtained by adding",'\n', 
@@ -111,7 +110,7 @@ print.Delta<- function(x){
 	}
 
 	print(x$Paramstable, row.names = FALSE)
-	temp = paste(x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
+	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
 	Encoding(temp) = "UTF-8"
 	cat(temp,'\n')
 
@@ -150,9 +149,9 @@ print.Delta<- function(x){
 	  Encoding(temp) = "UTF-8"
 	  cat('\n',temp,'\n')
 	  print(x$Fullparamstable_AN, row.names = FALSE)
-      temp = paste(x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
-	  Encoding(temp) = "UTF-8"
-	  cat(temp,'\n')
+	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
+	Encoding(temp) = "UTF-8"
+	cat(temp,'\n')
 	  if (tp == "2.0"){
 	  cat("The estimations of 'delta i' falls on the boundary of the parametric space. For this reason the values of S.E.",'\n',
 			"have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *." ,'\n')
@@ -179,9 +178,9 @@ print.Delta<- function(x){
 	    cat("There isn't a standard observer",'\n')
 	  }
 	  print(x$Paramstable_AN, row.names = FALSE)
-	  temp = paste(x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
-	  Encoding(temp) = "UTF-8"
-	  cat(temp,'\n')
+	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
+	Encoding(temp) = "UTF-8"
+	cat(temp,'\n')
 	  if (tp == "2.0"){
 	    cat("The estimations of 'delta i' falls on the boundary of the parametric space. For this reason the values of S.E.",'\n',
 			"have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *." ,'\n')
@@ -209,9 +208,9 @@ print.Delta<- function(x){
 	  Encoding(temp) = "UTF-8"
 	  cat('\n',temp,'\n')
 	  print(x$Fullparamstable_AE, row.names = FALSE)
-      temp = paste(x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AN)
-	  Encoding(temp) = "UTF-8"
-	  cat(temp,'\n')
+	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AE)
+	Encoding(temp) = "UTF-8"
+	cat(temp,'\n')
 	  
 	  #Model parameters selected
 	  temp = paste("Model Parameters (Delta and Pi) and Concordance Measures \u00b1 S.E. with selected conditions",'\n',
@@ -234,9 +233,9 @@ print.Delta<- function(x){
 	    cat("There isn't a standard observer",'\n')
 	  }
 	  print(x$Paramstable_AE, row.names = FALSE)
-	  temp = paste(x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AN)
-	  Encoding(temp) = "UTF-8"
-	  cat('\n',temp,'\n')
+	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AE)
+	Encoding(temp) = "UTF-8"
+	cat(temp,'\n')
 	}
   }
    cat("End of the problem: K = ", x$k,'\n')
