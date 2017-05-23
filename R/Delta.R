@@ -287,7 +287,7 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		  colnames(Table) = c("Class","Delta","Pi","Agreement","Conformity","Predictivity","Consistency")
 		  res$Fullparamstable_AE = Table
 		  res$Deltaoverall_AE = round(res.M5$Delta.total,dplaces)
-		  res$Deltaoverall_SE_AN  = round(res.M5$Delta.total.cov,dplaces)
+		  res$Deltaoverall_SE_AE  = round(res.M5$Delta.total.cov,dplaces)
 		  
 		  
 		  if (delta.samplingtype == 1) {
