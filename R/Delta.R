@@ -140,10 +140,30 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  res$Cov_mix		= Cov_mix
 	  res$Cov_Pi		= Cov_Pi
 
-	  Agreement = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.Params$A.cov,dplaces))
-	  Conformity = paste(round(res.Params$F,dplaces)," \u00b1 ",round(res.Params$F.cov,dplaces))
-	  Predictivity = paste(round(res.Params$P,dplaces)," \u00b1 ",round(res.Params$P.cov,dplaces))
-	  Consistency = paste(round(res.Params$S,dplaces)," \u00b1 ",round(res.Params$S.cov,dplaces))
+	  if (!is.null(res.Params$A.cov)) {
+		Agreement = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.Params$A.cov,dplaces))
+	  }
+	  else{
+	    Agreement = paste(round(res.Params$A,dplaces))
+	  }
+	  if (!is.null(res.Params$F.cov)) {
+	    Conformity = paste(round(res.Params$F,dplaces)," \u00b1 ",round(res.Params$F.cov,dplaces))
+	  }
+	  else{
+	    Conformity = paste(round(res.Params$F,dplaces))
+	  }
+	  if (!is.null(res.Params$P.cov)) {
+	    Predictivity = paste(round(res.Params$P,dplaces)," \u00b1 ",round(res.Params$P.cov,dplaces))
+	  }
+	  else{
+	    Predictivity = paste(round(res.Params$P,dplaces))
+	  }
+	  if (!is.null(res.Params$S.cov)) {
+	    Consistency = paste(round(res.Params$S,dplaces)," \u00b1 ",round(res.Params$S.cov,dplaces))
+	  }
+	  else{
+	    Consistency = paste(round(res.Params$S,dplaces))
+	  }
 	  Encoding(Agreement) = "UTF-8"
 	  Encoding(Conformity) = "UTF-8"
 	  Encoding(Predictivity) = "UTF-8"
@@ -213,10 +233,31 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		names(Summary2)	= "Summary"
 		res$Summary_AN = Summary2
 		
+		
+	  if (!is.null(res.M4$A.cov)) {
 		Agreement = paste(round(res.M4$A,dplaces)," \u00b1 ",round(res.M4$A.cov,dplaces))
-		Conformity = paste(round(res.M4$F,dplaces)," \u00b1 ",round(res.M4$F.cov,dplaces))
-		Predictivity = paste(round(res.M4$P,dplaces)," \u00b1 ",round(res.M4$P.cov,dplaces))
-		Consistency = paste(round(res.M4$S,dplaces)," \u00b1 ",round(res.M4$S.cov,dplaces))
+	  }
+	  else{
+	    Agreement = paste(round(res.M4$A,dplaces))
+	  }
+	  if (!is.null(res.M4$F.cov)) {
+	    Conformity = paste(round(res.M4$F,dplaces)," \u00b1 ",round(res.M4$F.cov,dplaces))
+	  }
+	  else{
+	    Conformity = paste(round(res.M4$F,dplaces))
+	  }
+	  if (!is.null(res.M4$P.cov)) {
+	    Predictivity = paste(round(res.M4$P,dplaces)," \u00b1 ",round(res.M4$P.cov,dplaces))
+	  }
+	  else{
+	    Predictivity = paste(round(res.M4$P,dplaces))
+	  }
+	  if (!is.null(res.M4$S.cov)) {
+	    Consistency = paste(round(res.M4$S,dplaces)," \u00b1 ",round(res.M4$S.cov,dplaces))
+	  }
+	  else{
+	    Consistency = paste(round(res.M4$S,dplaces))
+	  }
 		Encoding(Agreement) = "UTF-8"
 		Encoding(Conformity) = "UTF-8"
 		Encoding(Predictivity) = "UTF-8"
@@ -276,10 +317,31 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		  names(Summary2)	= "Summary"
 		  res$Summary_AE = Summary2
 		  
-		  Agreement = paste(round(res.M5$A,dplaces)," \u00b1 ",round(res.M5$A.cov,dplaces))
-		  Conformity = paste(round(res.M5$F,dplaces)," \u00b1 ",round(res.M5$F.cov,dplaces))
-		  Predictivity = paste(round(res.M5$P,dplaces)," \u00b1 ",round(res.M5$P.cov,dplaces))
-		  Consistency = paste(round(res.M5$S,dplaces)," \u00b1 ",round(res.M5$S.cov,dplaces))
+		  if (!is.null(res.M5$A.cov)) {
+			Agreement = paste(round(res.M5$A,dplaces)," \u00b1 ",round(res.M5$A.cov,dplaces))
+		  }
+		  else{
+			Agreement = paste(round(res.M5$A,dplaces))
+		  }
+		  if (!is.null(res.M5$F.cov)) {
+			Conformity = paste(round(res.M5$F,dplaces)," \u00b1 ",round(res.M5$F.cov,dplaces))
+		  }
+		  else{
+			Conformity = paste(round(res.M5$F,dplaces))
+		  }
+		  if (!is.null(res.M5$P.cov)) {
+			Predictivity = paste(round(res.M5$P,dplaces)," \u00b1 ",round(res.M5$P.cov,dplaces))
+		  }
+		  else{
+			Predictivity = paste(round(res.M5$P,dplaces))
+		  }
+		  if (!is.null(res.M5$S.cov)) {
+			Consistency = paste(round(res.M5$S,dplaces)," \u00b1 ",round(res.M5$S.cov,dplaces))
+		  }
+		  else{
+			Consistency = paste(round(res.M5$S,dplaces))
+		  }
+
 		  Encoding(Agreement) = "UTF-8"
 		  Encoding(Conformity) = "UTF-8"
 		  Encoding(Predictivity) = "UTF-8"
