@@ -62,31 +62,33 @@ print.Delta<- function(x){
       cat("*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data)",'\n')
     }
 	
-	#HIDDEN RESULTS: Cov matrix
-	cat('\n',"Covariance Matrix = Cov(Delta,Pi)",'\n')
-	cat('Cov(Delta,Delta)','\n')
-	print(x$Cov_Delta)
-	cat('\n','Cov(Delta,Pi)','\n')
-	print(x$Cov_mix)
-	cat('\n','Cov(Pi,Pi)','\n')
-	print(x$Cov_Pi)
-	
-	#HIDDEN RESULTS: All model parameters
-	temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E.")
-	Encoding(temp) = "UTF-8"
-	cat('\n',temp,'\n')
-	print(x$Fullparamstable, row.names = FALSE)
-	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
-	Encoding(temp) = "UTF-8"
-	cat(temp,'\n')
-	if (tp == "3.1"){
-	  cat("The problem has infinite solutions for pi. For this reason the values of S.E. have been obtained by adding",'\n', 
-	  "0.5 to all the observations. The new parameters are those marked with *.",'\n')
-	}
-	else if (tp == "3.4"){
-	  cat("At least one estimation of 'delta i' or of 'pi i' falls on the boundary of the parametric space. For this ",'\n', 
-	  "reason the values of S.E. have been obtained by adding 0.5 to all the observations. The new parameters are those",'\n', 
-	  "marked with *.",'\n')
+	if (x$showall == TRUE){
+		#HIDDEN RESULTS: Cov matrix
+		cat('\n',"Covariance Matrix = Cov(Delta,Pi)",'\n')
+		cat('Cov(Delta,Delta)','\n')
+		print(x$Cov_Delta)
+		cat('\n','Cov(Delta,Pi)','\n')
+		print(x$Cov_mix)
+		cat('\n','Cov(Pi,Pi)','\n')
+		print(x$Cov_Pi)
+		
+		#HIDDEN RESULTS: All model parameters
+		temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E.")
+		Encoding(temp) = "UTF-8"
+		cat('\n',temp,'\n')
+		print(x$Fullparamstable, row.names = FALSE)
+		temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall," \u00b1 ",x$Deltaoverall_SE)
+		Encoding(temp) = "UTF-8"
+		cat(temp,'\n')
+		if (tp == "3.1"){
+		  cat("The problem has infinite solutions for pi. For this reason the values of S.E. have been obtained by adding",'\n', 
+		  "0.5 to all the observations. The new parameters are those marked with *.",'\n')
+		}
+		else if (tp == "3.4"){
+		  cat("At least one estimation of 'delta i' or of 'pi i' falls on the boundary of the parametric space. For this ",'\n', 
+		  "reason the values of S.E. have been obtained by adding 0.5 to all the observations. The new parameters are those",'\n', 
+		  "marked with *.",'\n')
+		}
 	}
 	
 	#Model parameters selected
@@ -144,17 +146,19 @@ print.Delta<- function(x){
 		cat("*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data) ",'\n')
 	  }
 	  
-	  #HIDDEN RESULTS: All model parameters
-      temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E. (Asintotic Normal)")
-	  Encoding(temp) = "UTF-8"
-	  cat('\n',temp,'\n')
-	  print(x$Fullparamstable_AN, row.names = FALSE)
-	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
-	Encoding(temp) = "UTF-8"
-	cat(temp,'\n')
-	  if (tp == "2.0"){
-	  cat("The estimations of 'delta i' falls on the boundary of the parametric space. For this reason the values of S.E.",'\n',
-			"have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *." ,'\n')
+	  if (x$showall == TRUE){
+		  #HIDDEN RESULTS: All model parameters
+		  temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E. (Asintotic Normal)")
+		  Encoding(temp) = "UTF-8"
+		  cat('\n',temp,'\n')
+		  print(x$Fullparamstable_AN, row.names = FALSE)
+		temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AN," \u00b1 ",x$Deltaoverall_SE_AN)
+		Encoding(temp) = "UTF-8"
+		cat(temp,'\n')
+		  if (tp == "2.0"){
+		  cat("The estimations of 'delta i' falls on the boundary of the parametric space. For this reason the values of S.E.",'\n',
+				"have been obtained by adding 0.5 to all the observations. The new parameters are those marked with *." ,'\n')
+		  }
 	  }
 	  
 	  #Model parameters selected
@@ -203,15 +207,16 @@ print.Delta<- function(x){
 		cat("*(Since R(i)=C(i)=x(i,i) for all i, S.E.(kappa) has been obtained adding 0.5 to the original data) ",'\n')
 	  }
 	  
-	  #HIDDEN RESULTS: All model parameters
-      temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E. (Asintotic Extra)")
-	  Encoding(temp) = "UTF-8"
-	  cat('\n',temp,'\n')
-	  print(x$Fullparamstable_AE, row.names = FALSE)
-	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AE)
-	Encoding(temp) = "UTF-8"
-	cat(temp,'\n')
-	  
+	  if (x$showall == TRUE){
+	    #HIDDEN RESULTS: All model parameters
+		temp = paste("Model Parameters (Delta and Pi) and All Concordance Measures \u00b1 S.E. (Asintotic Extra)")
+		Encoding(temp) = "UTF-8"
+		cat('\n',temp,'\n')
+		print(x$Fullparamstable_AE, row.names = FALSE)
+		temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AE)
+		Encoding(temp) = "UTF-8"
+		cat(temp,'\n')
+	  }
 	  #Model parameters selected
 	  temp = paste("Model Parameters (Delta and Pi) and Concordance Measures \u00b1 S.E. with selected conditions",'\n',
 					"(Asintotic Extra)")
@@ -233,9 +238,9 @@ print.Delta<- function(x){
 	    cat("There isn't a standard observer",'\n')
 	  }
 	  print(x$Paramstable_AE, row.names = FALSE)
-	temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AE)
-	Encoding(temp) = "UTF-8"
-	cat(temp,'\n')
+	  temp = paste("Delta \u00b1 S.E. = ", x$Deltaoverall_AE," \u00b1 ",x$Deltaoverall_SE_AE)
+	  Encoding(temp) = "UTF-8"
+	  cat(temp,'\n')
 	}
   }
    cat("End of the problem: K = ", x$k,'\n')

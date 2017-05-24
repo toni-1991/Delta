@@ -5,7 +5,7 @@
 \title{Main Check Input function}
 \usage{
 CheckInput(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
-  tol = 1e-12, dplaces = 4)
+  tol = 1e-12, dplaces = 4, showall = FALSE)
 }
 \arguments{
 \item{datatable}{Matrix. Expected to be square matrix with at least 2 rows (columns), non negative values and at least an element different of zero.}
@@ -19,6 +19,8 @@ CheckInput(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
 \item{tol}{Double number. Indicate the precision of the numeric method to calculate B. Expected to be 1e-6 <= tol <= 1e-15.Default is 1e-12.}
 
 \item{dplaces}{Whole number. Decimal placed to be shown in the result. Expected to be 1 <= dplaces <0 6. Default 4.}
+
+\item{showall}{Boolean. Indicate if all output should be shown. If TRUE also shown hidden results. If FALSE shown only main output. By default is FALSE.}
 }
 \description{
 This function perform multiple tasks. First of all, check the parameters specified by the user.  Also asign default values to some parameters not defined by the user. Finally it generates error  messages and halt the execution in case it is needed.

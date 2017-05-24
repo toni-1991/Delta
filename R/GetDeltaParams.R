@@ -52,7 +52,7 @@ GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
 	A.cov = (R.marg/n)^2 * (diag.Cov + (n - R.marg)/(R.marg*n)*Delta ^2)
 	S.cov = (2 * R.marg/(R.marg + C.marg))^2*(diag.Cov + Delta^2/(R.marg + C.marg)*(C.marg/R.marg - 2 + 2 * diag.matrix/(R.marg + C.marg)))
 	if (k != 2){
-	  Delta.total.cov = 1/n^2 * (n - 1/Sum.E - n * Delta^2)
+	  Delta.total.cov = 1/n^2 * (n - 1/Sum.E - n * Delta.total^2)
 	}
 	else if (k == 2){
 	  Delta.total.cov = 1/n^2 * (sum((R.marg %*%t(R.marg)) * Cov) + sum(R.marg * Delta^2) - n * Delta.total^2)

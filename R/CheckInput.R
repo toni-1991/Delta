@@ -7,6 +7,7 @@
 #' @param maxits Whole number. Indicate the maximum number of iterations of the numeric method to calculate B. Expected to be 100 <= maxits <= 5000. Default is 1000.
 #' @param tol Double number. Indicate the precision of the numeric method to calculate B. Expected to be 1e-6 <= tol <= 1e-15.Default is 1e-12.
 #' @param dplaces Whole number. Decimal placed to be shown in the result. Expected to be 1 <= dplaces <0 6. Default 4.
+#' @param showall Boolean. Indicate if all output should be shown. If TRUE also shown hidden results. If FALSE shown only main output. By default is FALSE.
 #' @keywords check datatable fixedrows gstandard maxits tol dplaces
 #' @export
 #' @examples
@@ -18,7 +19,7 @@
 #' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1,dplaces=20)
 #' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
 
-CheckInput <-function(datatable,fixedrows=FALSE,gstandard="No",maxits=1000,tol=1e-12,dplaces=4){
+CheckInput <-function(datatable,fixedrows=FALSE,gstandard="No",maxits=1000,tol=1e-12,dplaces=4, showall = FALSE){
   #Check matrix
   CheckInputData(datatable)
   #Checks of fixedrows and gstandard and compatibility between them
@@ -50,6 +51,9 @@ CheckInput <-function(datatable,fixedrows=FALSE,gstandard="No",maxits=1000,tol=1
   }
   if (dplaces<1 | dplaces>6){
   	stop("dplaces must be greater than 1 and lower than 6")
+  }
+  if (is.null(showall) | (showall != FALSE & showall != TRUE)){
+	stop("showall must be a boolean")
   }
   return(delta.samplingtype)
 }

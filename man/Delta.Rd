@@ -6,7 +6,7 @@
 \title{Delta coefficient function}
 \usage{
 Delta(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
-  tol = 1e-12, dplaces = 4)
+  tol = 1e-12, dplaces = 4, showall = FALSE)
 
 \method{print}{Delta}(x)
 }
@@ -22,6 +22,8 @@ Delta(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
 \item{tol}{Double number. Indicate the precision of the numeric method to calculate B. Expected to be 1e-6 <= tol <= 1e-15.Default is 1e-12.}
 
 \item{dplaces}{Whole number. Decimal placed to be shown in the result. Expected to be 1 <= dplaces <0 6. Default 4.}
+
+\item{showall}{Boolean. Indicate if all output should be shown. If TRUE also shown hidden results. If FALSE shown only main output. By default is FALSE.}
 }
 \value{
 \code{NULL}

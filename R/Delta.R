@@ -13,6 +13,7 @@
 #' @param maxits Whole number. Indicate the maximum number of iterations of the numeric method to calculate B. Expected to be 100 <= maxits <= 5000. Default is 1000.
 #' @param tol Double number. Indicate the precision of the numeric method to calculate B. Expected to be 1e-6 <= tol <= 1e-15.Default is 1e-12.
 #' @param dplaces Whole number. Decimal placed to be shown in the result. Expected to be 1 <= dplaces <0 6. Default 4.
+#' @param showall Boolean. Indicate if all output should be shown. If TRUE also shown hidden results. If FALSE shown only main output. By default is FALSE.
 #' @keywords Delta datatable fixedrows gstandard maxits tol dplaces
 #' @export
 #' @examples
@@ -20,10 +21,10 @@
 #' Delta(matrix(c(65,5,10,20),2,2),fixedrows=TRUE,gstandard="Row")
 
 Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
-         maxits=1000,tol=1e-12,dplaces=4){
+         maxits=1000,tol=1e-12,dplaces=4,showall = FALSE){
 
   # Check input variables
-  delta.samplingtype = CheckInput(datatable,fixedrows ,gstandard ,maxits,tol,dplaces)
+  delta.samplingtype = CheckInput(datatable,fixedrows ,gstandard ,maxits,tol,dplaces,showall)
 
   #Keep original size
   k_0 	= dim(datatable)[1]
@@ -111,6 +112,7 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   res$tp = tp
   res$k = k
   res$k0 = k_0
+  res$showall = showall
   res$samplingtype = delta.samplingtype
   
   if (k >= 2){
