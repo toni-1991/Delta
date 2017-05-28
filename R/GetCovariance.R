@@ -6,7 +6,6 @@
 #' @param Delta Vector. Each element indicate the probability of recognize an element i.
 #' @param Pi Vector. Each element indicate the probability of classify at random an element in category i.
 #' @param B Double. Numerical solution to the equation given by the model.
-#' @param k Integer. Dimension of the problem.
 #' @keywords Delta mx Pi B k Covarianze
 #' @export
 #' @examples
@@ -14,11 +13,12 @@
 #' GetCovariance(mx = matrix(c(60,0,3,2,50,1,3,2,79),3,3), Delta = c( 0.8945724, 0.9522836, 0.8962094), Pi = c( 0.2703707, 0.1939561, 0.5356732), B = 17.94867, k = 3)
 
 
-GetCovariance <- function(mx,Delta,Pi,B,k){
+GetCovariance <- function(mx,Delta,Pi,B){
   #Calculate auxiliar params
-  if(k == 2){
-    mx = mx[-3,-3]
-  }
+  #if(k == 2){
+  #  mx = mx[-3,-3]
+  #}
+  k = dim(mx)[1]
   R.marg   	  = margin.table(mx,1)
   diag.matrix = diag(mx)
   if (is.null(Pi)){

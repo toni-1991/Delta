@@ -4,7 +4,7 @@
 \alias{GetCovariance}
 \title{Calculate Covariance function}
 \usage{
-GetCovariance(mx, Delta, Pi, B, k)
+GetCovariance(mx, Delta, Pi, B)
 }
 \arguments{
 \item{mx}{Matrix. Modified matrix to have a solution Usually GetMx$M2.}
@@ -14,8 +14,6 @@ GetCovariance(mx, Delta, Pi, B, k)
 \item{Pi}{Vector. Each element indicate the probability of classify at random an element in category i.}
 
 \item{B}{Double. Numerical solution to the equation given by the model.}
-
-\item{k}{Integer. Dimension of the problem.}
 }
 \description{
 This function calculate covariance for combinations Cov(Delta,Delta), Cov(Delta,Pi) and Cov(Pi,Pi).

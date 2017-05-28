@@ -63,17 +63,17 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	mat = M2
   
 	#Goodnes of fit to the model
-        res = GetGoodness(mat,Pi,Delta)
+    res = GetGoodness(mat,Pi,Delta)
 	X.sq 	= res$X.squared
 	df 		= res$df
 	p.val 	= res$p.value
 	E.matrix = res$E.matrix
 	  
 	#Update Delta and Pi to correct size in cases 2.X
-	if (k==2){
-	  Pi 	= Pi[-3]
-	  Delta = Delta[-3]
-	}
+	#if (k==2){
+	#  Pi 	= Pi[-3]
+	#  Delta = Delta[-3]
+	#}
 	  
 	#For 3.1 and 3.4, redo calcs with M3 for delta and pi
 	#To avoid issues with tp = 3.1, tp will be fixed to 3.4
@@ -85,11 +85,20 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  mat 		= M3
 	}
 	
-	Covar = GetCovariance(mat,Delta,Pi,B,k)
+	Covar = GetCovariance(mat,Delta,Pi,B)
 	Cov_Delta 	= Covar$Cov_Delta
 	Cov_mix 	= Covar$Cov_mix
 	Cov_Pi 		= Covar$Cov_Pi
 	
+		  
+	#Update Delta and Pi to correct size in cases 2.X
+	if (k==2){
+	  Pi 	= Pi[-3]
+	  Delta = Delta[-3]
+	  Cov_Delta = Cov_Delta[-3,-3]
+	  Cov_mix = Cov_mix[-3,-3]
+	  Cov_Pi = Cov_Pi[-3,-3]
+	}
 	res.Params = GetDeltaParams(mat,fixedrows, Delta, Pi, B, k, Cov_Delta)
 	
 	#Calculations Part 3: Asintotic calculations
@@ -116,7 +125,7 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   res$samplingtype = delta.samplingtype
   
   if (k >= 2){
-	  res$E_matrix 	= E.matrix
+	  res$E_matrix 	= round(E.matrix,dplaces)
 	  Chisq 		=     paste("Chi-squared =", round(X.sq,dplaces), "(d.f.=",df,"); p=", round(p.val,dplaces))
 	  if (tp == "2.0" | tp == "3.0") {
 		Kappa.results	= paste("Kappa \u00b1 S.E. = ",round(kappa.val,dplaces), "* \u00b1 ",round(kappa.SE,dplaces), "*")
@@ -136,9 +145,9 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	  Summary1 = data.frame(c(Chisq,Kappa.results,Delta.results))
 	  names(Summary1)	= "Summary"
 	  res$Summary 		= Summary1
-	  res$Cov_Delta		= Cov_Delta
-	  res$Cov_mix		= Cov_mix
-	  res$Cov_Pi		= Cov_Pi
+	  res$Cov_Delta		= round(Cov_Delta,dplaces)
+	  res$Cov_mix		= round(Cov_mix,dplaces)
+	  res$Cov_Pi		= round(Cov_Pi,dplaces)
 
 	  if (!is.null(res.Params$A.cov)) {
 		Agreement = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.Params$A.cov,dplaces))
