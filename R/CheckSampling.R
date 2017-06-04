@@ -6,9 +6,6 @@
 #' @keywords check fixedrows gstandard 
 #' @export
 #' @examples
-#' CheckSampling(,"rows")
-#' CheckSampling(3,"rows")
-#' CheckSampling(TRUE,"Yes")
 #' CheckSampling(TRUE,"rows")
 #' CheckSampling(TRUE,"Columns")
 

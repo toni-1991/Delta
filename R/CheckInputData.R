@@ -5,10 +5,6 @@
 #' @keywords check datatable 
 #' @export
 #' @examples
-#' CheckInputData(c(1,2,3))
-#' CheckInputData(matrix(c(1,2,3,4,5,6),2,3))
-#' CheckInputData(matrix(c(0,0,0,0),2,2))
-#' CheckInputData(matrix(c(1,2,-3,4),2,2))
 #' CheckInputData(matrix(c(1,2,3,4),2,2))
 CheckInputData <- function(datatable){
   

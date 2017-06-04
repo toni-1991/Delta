@@ -79,9 +79,10 @@ GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
 #' @return \code{NULL}
 #'
 #' @rdname GetDeltaParams
+#' @param x List produced by GetDeltaParams
 #' @export
 #' @method print GetDeltaParams 
-print.GetDeltaParams<- function(x){
+print.GetDeltaParams<- function(x,...){
 #Delta 
    cat('','Overall Agreement, Delta ','\n')
    Delta = paste(x$Delta.total," \u00b1 ",x$Delta.total.cov)

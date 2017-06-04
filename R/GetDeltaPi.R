@@ -14,7 +14,8 @@
 #' @export
 #' @examples
 #' GetDeltaPi(mx = matrix(c(1,0,0,0,2,0,0,0,3),3,3), tp = "3.1", tol = 1e-12, maxits = 1000)
-#' GetDeltaPi(mx = matrix(c(1.5,2.5,0.5,3.5,4.5,0.5,0.5,0.5,1.5),3,3), tp = "3.2", tol = 1e-12, maxits = 1000)
+#' GetDeltaPi(mx = matrix(c(1.5,2.5,0.5,3.5,4.5,0.5,0.5,0.5,1.5),3,3), tp = "3.2", 
+#'            tol = 1e-12, maxits = 1000)
 
 
 GetDeltaPi <-function(mx,tp,tol = 1e-12,maxits = 1000){

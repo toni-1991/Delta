@@ -2,9 +2,10 @@
 #' @return \code{NULL}
 #'
 #' @rdname Delta
+#' @param x List produced by Delta
 #' @export
 #' @method print Delta 
-print.Delta<- function(x){
+print.Delta<- function(x,...){
    # Information about deleted rows;
    tp = x$tp
    samplingtype = x$samplingtype

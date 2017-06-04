@@ -1,10 +1,11 @@
-#' @return \code{NULL}
+﻿#' @return \code{NULL}
 #'
 #' @rdname Delta
+#' @param x List produced by Delta
 #' @export
 #' @method summary Delta 
 
-summary.Delta <- function(x) {
+summary.Delta <- function(x,...) {
   temp = x$Summary
   temp$Summary <- as.character(temp$Summary)
   if(!is.null(x$Summary_AN)){

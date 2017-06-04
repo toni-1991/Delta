@@ -41,9 +41,10 @@ GetM1 <- function(datatable) {
 #' @return \code{NULL}
 #'
 #' @rdname GetM1
+#' @param x List produced by GetM1
 #' @export
 #' @method print GetM1 
-print.GetM1<- function(x){
+print.GetM1<- function(x,...){
   cat("Simplified matrix is:\n")
   print(x$M1)
   cat("The problem has ", x$k, " categories.\n")

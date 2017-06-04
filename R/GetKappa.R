@@ -48,8 +48,9 @@ GetKappa <-function(mx){
 #' @return \code{NULL}
 #'
 #' @rdname GetKappa
+#' @param x List produced by GetKappa
 #' @export
 #' @method print GetKappa 
-print.GetKappa<- function(x){
+print.GetKappa<- function(x,...){
    cat("Kappa \u00b1 S.E. = ",x$kappa, " \u00b1 ",x$SE,'\n')
 }

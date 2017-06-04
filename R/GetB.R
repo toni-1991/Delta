@@ -50,7 +50,7 @@ GetB <-function(mx, tol = 1e-12, maxits = 1000){
 
   #Since B = n(1-Delta)>=B0, B is between B0 and 2n, since the min value of delta is -1, 
   #be confused between levels
-  root =  uniroot(y,c(B0,2*n), tol = tol, maxiter = maxits)$root
+  root =  stats::uniroot(y,c(B0,2*n), tol = tol, maxiter = maxits)$root
 
   res = list("B" = root, "term" = term)
   # "yB0" = yB0, "B0_i" = B0_i not needed

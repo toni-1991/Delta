@@ -54,9 +54,10 @@ GetAsinDeltaParams <- function(mx,fixedrows = TRUE){
 #' @return \code{NULL}
 #'
 #' @rdname GetAsinDeltaParams
+#' @param x List produced by GetAsinDeltaParams
 #' @export
 #' @method print GetAsinDeltaParams 
-print.GetAsinDeltaParams <- function(x){
+print.GetAsinDeltaParams <- function(x,...){
 #Delta 
   cat('','Delta for each category','\n')
   print(x$Delta)

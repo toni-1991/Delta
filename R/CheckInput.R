@@ -11,12 +11,6 @@
 #' @keywords check datatable fixedrows gstandard maxits tol dplaces
 #' @export
 #' @examples
-#' CheckInput(matrix(c(1,2,3,4,5,6),2,3),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
-#' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
-#' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="Yes",maxits=100,tol=1e-12,dplaces=4)
-#' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=10000,tol=1e-12,dplaces=4)
-#' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
-#' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1,dplaces=20)
 #' CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
 
 CheckInput <-function(datatable,fixedrows=FALSE,gstandard="No",maxits=1000,tol=1e-12,dplaces=4, showall = FALSE){

@@ -9,8 +9,12 @@
 #' @export
 #' @examples
 #' GetGoodness(mx = matrix(c(1,0,0,0,2,0,0,0,3),3,3), Delta = c(1,1,1), Pi = NULL)
-#' GetGoodness(mx = matrix(c(1.5,2.5,0.5,3.5,4.5,0.5,0.5,0.5,1.5),3,3), Delta = c(-0.2662395,  0.2047577,  0.5664672), Pi = c(0.42564365, 0.49700867, 0.07734769))
-#' GetGoodness(mx = matrix(c(60,0,3,2,50,1,3,2,79),3,3), Delta = c( 0.8945724, 0.9522836, 0.8962094), Pi = c( 0.2703707, 0.1939561, 0.5356732))
+#' GetGoodness(mx = matrix(c(1.5,2.5,0.5,3.5,4.5,0.5,0.5,0.5,1.5),3,3), 
+#'             Delta = c(-0.2662395,  0.2047577,  0.5664672), 
+#'             Pi = c(0.42564365, 0.49700867, 0.07734769))
+#' GetGoodness(mx = matrix(c(60,0,3,2,50,1,3,2,79),3,3), 
+#'             Delta = c( 0.8945724, 0.9522836, 0.8962094), 
+#'             Pi = c( 0.2703707, 0.1939561, 0.5356732))
 
 GetGoodness <- function(mx,Pi,Delta){
   #Calculate aux variables
@@ -47,7 +51,7 @@ GetGoodness <- function(mx,Pi,Delta){
   #Degree of freedoms
   df = (dim.matrix-1) * (dim.matrix - 2) - 1
 
-  pval = pchisq(chi.squared, df, lower.tail = FALSE)
+  pval = stats::pchisq(chi.squared, df, lower.tail = FALSE)
 
   # Standard output for chisq.test is X-squared = 3.2328, df = 3, p-value = 0.3571
   res = list("X.squared" = chi.squared, "df" = df, "p.value" = pval, "E.matrix" = E.matrix)
@@ -58,9 +62,10 @@ GetGoodness <- function(mx,Pi,Delta){
 #' @return \code{NULL}
 #'
 #' @rdname GetGoodness
+#' @param x List produced by GetGoodness
 #' @export
 #' @method print GetGoodness 
-print.GetGoodness<- function(x){
+print.GetGoodness<- function(x,...){
    cat('X-squared =', x$X.squared, ', df =', x$df,', p-value =',x$p.value,'\n')
    cat('Expected matrix:','\n')
    print(x$E.matrix)
