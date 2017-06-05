@@ -13,10 +13,6 @@ CheckInputData(datatable)
 This function checks that matrix introduced is as expected. Should be a matrix, squared, with a dimension greater or equal to two, without negative entries and at least an entry  different of 0.
 }
 \examples{
-CheckInputData(c(1,2,3))
-CheckInputData(matrix(c(1,2,3,4,5,6),2,3))
-CheckInputData(matrix(c(0,0,0,0),2,2))
-CheckInputData(matrix(c(1,2,-3,4),2,2))
 CheckInputData(matrix(c(1,2,3,4),2,2))
 }
 \keyword{check}

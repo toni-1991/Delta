@@ -26,12 +26,6 @@ CheckInput(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
 This function perform multiple tasks. First of all, check the parameters specified by the user.  Also asign default values to some parameters not defined by the user. Finally it generates error  messages and halt the execution in case it is needed.
 }
 \examples{
-CheckInput(matrix(c(1,2,3,4,5,6),2,3),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
-CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
-CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="Yes",maxits=100,tol=1e-12,dplaces=4)
-CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=10000,tol=1e-12,dplaces=4)
-CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
-CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1,dplaces=20)
 CheckInput(matrix(c(1,2,3,4),2,2),fixedrows=FALSE,gstandard="No",maxits=100,tol=1e-12,dplaces=4)
 }
 \keyword{check}

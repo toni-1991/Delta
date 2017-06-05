@@ -7,12 +7,16 @@
 \usage{
 GetAsinDeltaParams(mx, fixedrows = TRUE)
 
-\method{print}{GetAsinDeltaParams}(x)
+\method{print}{GetAsinDeltaParams}(x, ...)
 }
 \arguments{
 \item{mx}{Matrix. Agreement contingency table to perform calculations}
 
 \item{fixedrows}{Boolean. Indicate if sample rows are fixed beforehand.}
+
+\item{x}{List produced by GetAsinDeltaParams}
+
+\item{...}{Other print options}
 }
 \value{
 \code{NULL}

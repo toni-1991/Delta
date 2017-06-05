@@ -12,9 +12,14 @@
 #' @keywords Delta  mx fixedrows Pi B k Cov
 #' @export
 #' @examples
-#' GetDeltaParams(...)
+#' GetDeltaParams(mx = matrix(c(60,0,3,2,50,1,3,2,79),3,3), 
+#'				Delta = c( 0.8945724, 0.9522836, 0.8962094), 
+#'               Pi = c( 0.2703707, 0.1939561, 0.5356732), B = 17.94867,k = 3, Cov = 
+#'          matrix(c(0.002736490,  0.000004188, -0.001074704,
+#'                 0.000004188, 0.001141059, -0.000181746,
+#'                -0.001074704, -0.000181746,  0.004912131),3,3), fixedrows = FALSE)
 
-GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
+GetDeltaParams <- function(mx,fixedrows = FALSE, Delta, Pi, B, k, Cov){
   #Calculate auxiliar params
   if(k == 2){
     mx = mx[-3,-3]
@@ -80,6 +85,7 @@ GetDeltaParams <- function(mx,fixedrows, Delta, Pi, B, k, Cov){
 #'
 #' @rdname GetDeltaParams
 #' @param x List produced by GetDeltaParams
+#' @param ... Other print options
 #' @export
 #' @method print GetDeltaParams 
 print.GetDeltaParams<- function(x,...){

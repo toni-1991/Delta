@@ -49,6 +49,7 @@ GetKappa <-function(mx){
 #'
 #' @rdname GetKappa
 #' @param x List produced by GetKappa
+#' @param ... Other print options
 #' @export
 #' @method print GetKappa 
 print.GetKappa<- function(x,...){

@@ -3,6 +3,7 @@
 #'
 #' @rdname Delta
 #' @param x List produced by Delta
+#' @param ... Other print options
 #' @export
 #' @method print Delta 
 print.Delta<- function(x,...){

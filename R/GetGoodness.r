@@ -63,6 +63,7 @@ GetGoodness <- function(mx,Pi,Delta){
 #'
 #' @rdname GetGoodness
 #' @param x List produced by GetGoodness
+#' @param ... Other print options
 #' @export
 #' @method print GetGoodness 
 print.GetGoodness<- function(x,...){

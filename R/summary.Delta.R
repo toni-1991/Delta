@@ -1,17 +1,17 @@
-﻿#' @return \code{NULL}
+#' @return \code{NULL}
 #'
 #' @rdname Delta
-#' @param x List produced by Delta
+#' @param object List produced by Delta
 #' @export
 #' @method summary Delta 
 
-summary.Delta <- function(x,...) {
-  temp = x$Summary
+summary.Delta <- function(object,...) {
+  temp = object$Summary
   temp$Summary <- as.character(temp$Summary)
-  if(!is.null(x$Summary_AN)){
+  if(!is.null(object$Summary_AN)){
      temp = rbind(temp, 
-            paste(as.character(unlist(x$Summary_AN)[2]),"#") ,
-            paste(as.character(unlist(x$Summary_AE)[2]),"##"))
+            paste(as.character(unlist(object$Summary_AN)[2]),"#") ,
+            paste(as.character(unlist(object$Summary_AE)[2]),"##"))
     cat('\n',"SUMMARY: Goodness of Fit + Kappa + Delta (Normal)",'\n',
              "+ Delta (Asintotic Normal) + Delta (Asintotic Extra)",'\n')
 
@@ -26,7 +26,7 @@ summary.Delta <- function(x,...) {
       print(temp, row.names = FALSE)
   }
     #Note under some cases;
-	tp = x$tp
+	tp = object$tp
     if (tp == "2.0" | tp == "3.0") {
       cat("* A total of rows or column is equal to zero: Results obtained adding 0.5 to all cells. ",'\n')
     }

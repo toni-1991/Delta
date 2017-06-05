@@ -42,6 +42,7 @@ GetM1 <- function(datatable) {
 #'
 #' @rdname GetM1
 #' @param x List produced by GetM1
+#' @param ... Other print options
 #' @export
 #' @method print GetM1 
 print.GetM1<- function(x,...){

@@ -9,9 +9,9 @@
 Delta(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
   tol = 1e-12, dplaces = 4, showall = FALSE)
 
-\method{print}{Delta}(x)
+\method{print}{Delta}(x, ...)
 
-\method{summary}{Delta}(x)
+\method{summary}{Delta}(object, ...)
 }
 \arguments{
 \item{datatable}{Matrix. Expected to be square matrix with at least 2 rows (columns), non negative values and at least an element different of zero.}
@@ -27,6 +27,12 @@ Delta(datatable, fixedrows = FALSE, gstandard = "No", maxits = 1000,
 \item{dplaces}{Whole number. Decimal placed to be shown in the result. Expected to be 1 <= dplaces <0 6. Default 4.}
 
 \item{showall}{Boolean. Indicate if all output should be shown. If TRUE also shown hidden results. If FALSE shown only main output. By default is FALSE.}
+
+\item{x}{List produced by Delta}
+
+\item{...}{Other print options}
+
+\item{object}{List produced by Delta}
 }
 \value{
 \code{NULL}

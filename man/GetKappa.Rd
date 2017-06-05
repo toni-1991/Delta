@@ -7,10 +7,14 @@
 \usage{
 GetKappa(mx)
 
-\method{print}{GetKappa}(x)
+\method{print}{GetKappa}(x, ...)
 }
 \arguments{
 \item{mx}{Matrix. Agreement contingency table to perform calculations}
+
+\item{x}{List produced by GetKappa}
+
+\item{...}{Other print options}
 }
 \value{
 \code{NULL}

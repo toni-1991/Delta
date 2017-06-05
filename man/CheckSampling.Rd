@@ -15,9 +15,6 @@ CheckSampling(fixedrows, gstandard)
 This function checks that fixedrows and gstandard parameters are correct. Also return a value indicating if it is or not valid and what kind of output should be shown at the end of the execution.
 }
 \examples{
-CheckSampling(,"rows")
-CheckSampling(3,"rows")
-CheckSampling(TRUE,"Yes")
 CheckSampling(TRUE,"rows")
 CheckSampling(TRUE,"Columns")
 }

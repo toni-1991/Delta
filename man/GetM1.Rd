@@ -7,10 +7,14 @@
 \usage{
 GetM1(datatable)
 
-\method{print}{GetM1}(x)
+\method{print}{GetM1}(x, ...)
 }
 \arguments{
 \item{datatable}{Matrix. Expected to be square matrix with at least 2 rows (columns), non negative values and at least an element different of zero.}
+
+\item{x}{List produced by GetM1}
+
+\item{...}{Other print options}
 }
 \value{
 \code{NULL}

@@ -55,6 +55,7 @@ GetAsinDeltaParams <- function(mx,fixedrows = TRUE){
 #'
 #' @rdname GetAsinDeltaParams
 #' @param x List produced by GetAsinDeltaParams
+#' @param ... Other print options
 #' @export
 #' @method print GetAsinDeltaParams 
 print.GetAsinDeltaParams <- function(x,...){
