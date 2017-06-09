@@ -97,13 +97,13 @@ TestType <- function(tp, M1, k, Xr, Xc, Xt){
 	return(res)
   }
   else if (tp == "3.4") {
-	if (all(Xr != 0) == FALSE | all(Xc != 0) == FALSE | all(diag.M1 != 0) == FALSE) {
+	if (all(diag.M1 != Xr) == FALSE | all(diag.M1 != Xc) == FALSE | all(diag.M1 != 0) == FALSE) {
 		res = TRUE
 	}
 	return(res)
   }
   else if (tp == "3.5") {
-	if (all(Xr != 0) == TRUE | all(Xc != 0) == TRUE | all(diag.M1 != 0) == TRUE) {
+	if (all(diag.M1 != Xr) == TRUE | all(diag.M1 != Xc) == TRUE | all(diag.M1 != 0) == TRUE) {
 		res = TRUE
 	}
 	return(res)
