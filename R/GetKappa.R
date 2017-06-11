@@ -42,6 +42,7 @@ GetKappa <-function(mx){
   b = (1-kappa)^2 * sum(Copy_matrix * (Rmat + Cmat)^2)
   c = (kappa - Expected * (1-kappa))^2
   SE = 1/(1-Expected) * sqrt((a+b-c)/n)
+  #SE_alt = 1/(1-Expected)/sqrt(n) * sqrt(Expected + Expected^2 - sum(R.marg/n*C.marg/n*aux_calc))
   res = list("kappa" = kappa, "SE" = SE)
   class(res) <- "GetKappa"
   return(res)

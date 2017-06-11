@@ -107,7 +107,7 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 	}
 	
 	res.Params = GetDeltaParams(M2, Delta, Pi, k)
-	res.ParamsVar = GetDeltaVar(mat,fixedrows, Delta_cov, Pi_cov, k, Cov_Delta, E)
+	res.ParamsVar = GetDeltaParamsVar(mat,fixedrows, Delta_cov, Pi_cov, k, Cov_Delta, E)
 	
 	#Calculations Part 3: Asintotic calculations
 	if (tp == "2.0" | tp == "2.1" | tp == "2.2"){
