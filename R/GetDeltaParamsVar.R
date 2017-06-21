@@ -38,32 +38,32 @@ GetDeltaParamsVar <- function(mx,fixedrows = FALSE, Delta, Pi, k, Cov, E){
     Delta		= rep(1,k)
   }
   Sum.E = sum(E)
-  
   Delta.total = sum(R.marg * Delta)/n
   
+  
   #Variance calculations
-  F.cov = diag.Cov
+  F.cov = sqrt(diag.Cov)
   #Sampling type 1
   if (fixedrows == FALSE){
-    P.cov = (R.marg/C.marg)^2 * (diag.Cov + (C.marg - R.marg)/(R.marg*C.marg)*Delta ^2)
-	A.cov = (R.marg/n)^2 * (diag.Cov + (n - R.marg)/(R.marg*n)*Delta ^2)
-	S.cov = (2 * R.marg/(R.marg + C.marg))^2*(diag.Cov + Delta^2/(R.marg + C.marg)*(C.marg/R.marg - 2 + 2 * diag.matrix/(R.marg + C.marg)))
+    P.cov = sqrt((R.marg/C.marg)^2 * (diag.Cov + (C.marg - R.marg)/(R.marg*C.marg)*Delta ^2))
+	A.cov = sqrt((R.marg/n)^2 * (diag.Cov + (n - R.marg)/(R.marg*n)*Delta ^2))
+	S.cov = sqrt((2 * R.marg/(R.marg + C.marg))^2*(diag.Cov + Delta^2/(R.marg + C.marg)*(C.marg/R.marg - 2 + 2 * diag.matrix/(R.marg + C.marg))))
 	if (k != 2){
-	  Delta.total.cov = 1/n^2 * (n - 1/Sum.E - n * Delta.total^2)
+	  Delta.total.cov = sqrt(1/n^2 * (n - 1/Sum.E - n * Delta.total^2))
 	}
 	else if (k == 2){
-	  Delta.total.cov = 1/n^2 * (sum((R.marg %*%t(R.marg)) * Cov) + sum(R.marg * Delta^2) - n * Delta.total^2)
+	  Delta.total.cov = sqrt(1/n^2 * (sum((R.marg %*%t(R.marg)) * Cov) + sum(R.marg * Delta^2) - n * Delta.total^2))
 	}
   }#Sampling type 2
   else if (fixedrows == TRUE){
     P.cov = NULL
-    A.cov = (R.marg/n)^2 * diag.Cov
+    A.cov = sqrt((R.marg/n)^2 * diag.Cov)
 	S.cov = NULL
 	if (k != 2){
-	  Delta.total.cov = 1/n^2 * (n - 1/Sum.E - sum(R.marg * Delta^2))
+	  Delta.total.cov = sqrt(1/n^2 * (n - 1/Sum.E - sum(R.marg * Delta^2)))
 	}
 	else if (k == 2){
-	  Delta.total.cov = 1/n^2 * sum((R.marg %*%t(R.marg)) * Cov) 
+	  Delta.total.cov = sqrt(1/n^2 * sum((R.marg %*%t(R.marg)) * Cov) )
 	}
   }
   res = list("Delta.total.cov" = Delta.total.cov, "F.cov" = F.cov, "P.cov" = P.cov, "A.cov" = A.cov, "S.cov" = S.cov)
