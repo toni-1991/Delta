@@ -1,6 +1,6 @@
 Package: Delta
 Title: Measure of Agreement Between Two Raters
-Version: 0.1.0.1
+Version: 0.1.1.1
 Authors@R: person("Antonio", "Rodriguez", email = "tonirodriguezcontesti@gmail.com", role = c("aut", "cre"))
 Description: Measure of agreement Delta was originally by Martín & Femia (2004) <DOI:10.1348/000711004849268>. 
     Since then has been considered as agreement measure for different 
