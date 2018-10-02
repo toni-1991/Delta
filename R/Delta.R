@@ -178,9 +178,9 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   Encoding(Predictivity)  = "UTF-8"
   Encoding(Consistency)   = "UTF-8"
 
-  #if (is.null(Pi)){
-  #  Pi		= rep(0,k)
-  #}
+  if (is.null(Pi)){
+    Pi		= rep(NaN,k)
+  }
   
   if (dtp != "DN1" && dtp != "DN0"){
     Delta_tab 	= paste(round(Delta,dplaces), "(" ,round(Delta_cov,dplaces) , ")")
