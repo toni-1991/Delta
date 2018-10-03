@@ -159,6 +159,12 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
   res$showall = showall
   res$samplingtype = delta.samplingtype
   
+  if (is.null(res.ParamsVar$P.cov)){
+    res.ParamsVar$P.cov		= rep(NaN,k)
+  }
+  if (is.null(res.ParamsVar$S.cov)){
+    res.ParamsVar$S.cov		= rep(NaN,k)
+  }
   #First table 1
   if (dtp != "DN1" && dtp != "DN0") {
     Agreement     = paste(round(res.Params$A,dplaces)," \u00b1 ",round(res.ParamsVar$A.cov,dplaces))
@@ -309,7 +315,14 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		Summary2 = data.frame(c(Kappa.results,Delta.results))
 		names(Summary2)	= "Summary"
 		res$Summary_AN = Summary2
-		
+		  
+        if (is.null(res.M1$P.cov)){
+          res.M1$P.cov		= rep(NaN,k)
+        }
+        if (is.null(res.M1$S.cov)){
+          res.M1$S.cov		= rep(NaN,k)
+        }
+          
 		if (dtp2 == "DA0"){
 	      Agreement = paste(round(res.M1$A,dplaces))
 	      Conformity = paste(round(res.M1$F,dplaces))
@@ -356,6 +369,14 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		res$Paramstable_AN = Table
         
         if (dtp2 == "DA0") {
+        	  
+          if (is.null(res.M3$P.cov)){
+            res.M3$P.cov		= rep(NaN,k)
+          }
+          if (is.null(res.M3$S.cov)){
+            res.M3$S.cov		= rep(NaN,k)
+          }
+          
           Agreement = paste(round(res.M3$A,dplaces)," \u00b1 ",round(res.M3$A.cov,dplaces))
 	      Conformity = paste(round(res.M3$F,dplaces)," \u00b1 ",round(res.M3$F.cov,dplaces))
 	      Predictivity = paste(round(res.M3$P,dplaces)," \u00b1 ",round(res.M3$P.cov,dplaces))
@@ -405,6 +426,14 @@ Delta <- function(datatable,fixedrows = FALSE, gstandard = "No",
 		names(Summary2)	= "Summary"
 		res$Summary_AE = Summary2
 		
+        	  
+        if (is.null(res.M4$P.cov)){
+          res.M4$P.cov		= rep(NaN,k)
+        }
+        if (is.null(res.M4$S.cov)){
+          res.M4$S.cov		= rep(NaN,k)
+        }
+        
 		Agreement = paste(round(res.M4$A,dplaces)," \u00b1 ",round(res.M4$A.cov,dplaces))
 		Conformity = paste(round(res.M4$F,dplaces)," \u00b1 ",round(res.M4$F.cov,dplaces))
 		Predictivity = paste(round(res.M4$P,dplaces)," \u00b1 ",round(res.M4$P.cov,dplaces))
