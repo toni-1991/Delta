@@ -1,6 +1,6 @@
 Package: Delta
 Title: Measure of Agreement Between Two Raters
-Version: 0.2.0.2
+Version: 0.2.0.3
 Authors@R: c(person("Antonio", "Rodriguez", email = "tonirodriguezcontesti@gmail.com", role = c("aut", "cre")),
 			 person("Pedro", "Femia", email = "pfemia@ugr.es", role = c("cph", "ctb")),
 			 person("Antonio", "Martin", email = "amartina@ugr.es", role = c("cph", "ctb")))
